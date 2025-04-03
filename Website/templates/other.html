@@ -1,0 +1,256 @@
+<!-- <!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Militaris wikipedia</title>
+
+        <style>
+            body {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .navigation {
+                position: fixed;
+                background-color: #536b39;
+                display: block;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 40px;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 110px;
+            }
+            .navigation_links {
+            display: flex;
+            gap: 200px;
+        }
+            .navigation_links a {
+                color: white;
+                text-decoration: none;
+                font-size: 25px;
+                font-family: Tahoma;
+            }
+            .interactive_page {
+                width: 20%;
+                height: 700px;
+                background-color: #536b39;
+                display: inline-block;
+                flex-direction: column;
+                border-radius: 51px;
+                margin-right: 2%;
+                margin-top: 90px;
+                /* vertical-align: top; */
+                /* position:fixed; */
+            }
+
+            .heading {
+                background-color: #154c09;
+                border-radius: 51px;
+                height: 80px;
+                width: 100%;
+                top: 0px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                font-family: Tahoma;
+                color: white;
+                font-size: 20px;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .search {
+                background-color: #154c09;
+                border-radius: 51px;
+                height: 44px;
+                width: 100%;
+                font-family: Tahoma;
+                color: white;
+                font-size: 20px;
+                justify-content: center;
+                align-items: center;
+                display: flex;            
+            }
+
+            .interactive_time_period {
+                align-items: left;
+                justify-content: left;
+                
+            }
+
+            .interactive_time_period h3 {
+                text-decoration: none;
+                color: white;
+                font-family: Tahoma;
+                font-size: 20px;
+                display: inline-block;
+                padding: 0px 10px;
+            }
+
+            .interactive_time_period a {
+                text-decoration: none;
+                color: white;
+                font-family: Tahoma;
+                font-size: 20px;
+                display: block;
+                padding: 3px 30px;
+                display: inline-block;
+                /* width: 200px; */
+            }
+
+            .page {
+                display: inline-block;
+                background-color: #536b39;
+                border-radius: 40px;
+                width: 32%;
+                height: 520px;
+                margin-top: 30px;
+                margin-right: 0.5%;
+                vertical-align: top;
+            }
+            .page img {
+                height: 50%;
+                width: 90%;
+                padding-left: 5%;
+                padding-top: 5%;
+                border-radius: 40px;
+            }
+
+            .page h4 {
+                font-family: Tahoma;
+                font-size: 20px;
+                color: white;
+                height: 10px;
+                margin-left: 20%;
+                margin-right: 20%;
+            }
+
+            .page p {
+                font-family: Tahoma;
+                font-size: 15px;
+                color: white;
+                margin-left: 7%;
+                margin-right: 7%;
+                margin-bottom: 7%;
+            }
+
+            .page button {
+                color: white;
+                background-color: #154c09;
+                border-radius: 40px;
+                border: none;
+                width: 80%;
+                height: 10%;
+                margin-left: 10%;
+                position: relative;
+            }
+
+            .time_heading {
+                display: inline-block;
+                background-color: #154c09;
+                color: white;
+                font-family: Tahoma;
+                font-size: 30px;
+                width: 75%;
+                height: 50px;
+                border-radius: 40px;
+                padding: 10px;
+                justify-content: center;
+                align-items: center;
+                vertical-align: top;
+                margin-top: 100px;
+                /* margin-left: 18%; */
+            }
+
+
+            .same_class_weapons {
+                width: 75%;
+                display:inline-block;
+                vertical-align: top;
+            }
+
+            .class_heading {
+                display: block;
+                background-color: #154c09;
+                color: white;
+                font-family: Tahoma;
+                font-size: 25px;
+                width: 30%;
+                height: 40px;
+                border-radius: 40px;
+                padding: 10px;
+                margin-top: 20px;
+            }
+
+        </style>
+
+    </head>
+    <body style="background-color: #bfaa6a;">
+
+        <div class="navigation">
+            <div class="navigation_links">
+                <a href="/main_page.html">Головна</a>
+                <a href="/wikipedia.html">Довідник</a>
+                <a href="/map.html">Карта</a>
+                <a href="/about.html">Про нас</a>
+            </div>
+        </div>
+    
+        <div class="interactive_page">
+            <p class="heading">Навігація по сторінці</p>
+            <p class="search">Пошук...</p>
+            <div class="interactive_time_period">
+                <h3>Часовий період:</h3>
+                <a href="/wiki_ww1.html">Перша світова війна</a>
+                <a href="/wiki_ww2.html">Друга світова війна</a>
+                <a href="/wiki_ussr.html">Рядянський період</a>
+                <a href="/wiki_1991.html">Незалежність (1991)</a>
+                <a href="/wiki_2014.html">Незалежність (2014)</a>
+                <a href="/wiki_2022.html">Незалежність (2022)</a>
+            </div>
+            <div class="weapon_class">
+            </div>
+        </div>
+
+        <h1 class="time_heading">Озброєння періоду незалежності - 2022 рік</h1>
+        <div class="same_class_weapons">
+            <h3 id="armored_vehicles" class="class_heading">Бронетехніка</h3>
+            <div class="page">
+                <img src="/images/RMMV_HX3_unveiled.jpg">
+                <h4>RMMV HX</h4>
+                <p>HX — серія спеціально розроблених тактичних військових вантажівок 
+                    виробництва Rheinmetall MAN Military Vehicles</p>
+                <button>Дізнатися більше</button>
+            </div>
+    
+            <div class="page">
+                <img src="/images/m1070.jpg">
+                <h4>M1070</h4>
+                <p>M1070 або Oshkosh HET —америк. танковий транспортер 
+                    виробництва Oshkosh. Основним призначенням є транспортування танка M1 Abrams.</p>
+                <button>Дізнатися більше</button>
+            </div>
+
+            <div class="page">
+                <img src="/images/RMMV_HX3_unveiled.jpg">
+                <h4>RMMV HX</h4>
+                <p>HX — серія спеціально розроблених тактичних військових вантажівок 
+                    виробництва Rheinmetall MAN Military Vehicles</p>
+                <button>Дізнатися більше</button>
+            </div>
+        
+            <div class="page">
+                <img src="/images/m1070.jpg">
+                <h4>M1070</h4>
+                <p>M1070 або Oshkosh HET —америк. танковий транспортер 
+                    виробництва Oshkosh. Основним призначенням є транспортування танка M1 Abrams.</p>
+                <button>Дізнатися більше</button>
+            </div>
+        </div>
+
+
+
+</html> -->

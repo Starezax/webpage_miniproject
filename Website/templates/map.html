@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Militaris - Карта</title>
+    <style>
+        /* Reset margin and padding for consistency */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #bfaa6a;
+            font-family: Tahoma;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #536b39;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .navigation_links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .navigation_links button {
+            color: white;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 30px;
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation_links button:hover {
+            background-color: white;
+            color: #536b39;
+        }
+
+        #map {
+            width: 100%;
+            height: 80vh; /* Enough space for the map */
+            margin-top: 80px; /* Offset for the fixed navigation bar */
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <div class="navigation_links">
+            <button onclick="window.location.href='/'">Головна</button>
+            <button onclick="window.location.href='/wikipedia'">Довідник</button>
+            <button onclick="window.location.href='/map'">Карта</button>
+            <button onclick="window.location.href='/about'">Про нас</button>
+        </div>
+    </div>
+
+    <div id="map">
+        <!-- Display Folium map HTML -->
+        {{ map_html|safe }}
+    </div>
+</body>
+</html>
