@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <title>Militaris - Карта</title>
     <style>
-        /* Reset margin and padding for consistency */
         body {
             margin: 0;
             padding: 0;
-            background-color: #bfaa6a;
-            font-family: Tahoma;
+            background-color: #f4f4f4;
+            font-family: Tahoma, sans-serif;
         }
 
         .navigation {
@@ -18,7 +17,7 @@
             left: 0;
             right: 0;
             background-color: #536b39;
-            height: 60px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -46,10 +45,85 @@
             color: #536b39;
         }
 
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            background-color: #2e4a26;
+            width: 220px;
+            padding: 20px;
+            color: white;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        #sidebar h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #f4f4f4;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields */
+        .filter-group input, .filter-group select {
+            width: 85%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid #536b39;
+            background-color: #f4f4f4;
+            color: #333;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-group input:focus, .filter-group select:focus {
+            border-color: #8a9e6c;
+            outline: none;
+            box-shadow: 0 0 10px rgba(133, 150, 108, 0.6);
+        }
+
+        .filter-group input::placeholder, .filter-group select {
+            color: #7c7c7c;
+        }
+
+        .filter-group input:hover, .filter-group select:hover {
+            background-color: #e7e7e7;
+        }
+
+        button[type="submit"] {
+            background-color: #536b39;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #8a9e6c;
+        }
         #map {
             width: 100%;
-            height: 80vh; /* Enough space for the map */
-            margin-top: 80px; /* Offset for the fixed navigation bar */
+            height: 100vh;
+            margin-left: 220px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            color: #536b39;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -63,9 +137,38 @@
         </div>
     </div>
 
+    <div id="sidebar">
+        <h3>Фільтри</h3>
+        <form method="post">
+            <div class="filter-group">
+                <label for="start_year">Виберіть початковий рік</label>
+                <input type="number" name="start_year" id="start_year" placeholder="Введіть початковий рік" value="{{ selected_start_year }}">
+            </div>
+            <div class="filter-group">
+                <label for="end_year">Виберіть кінцевий рік</label>
+                <input type="number" name="end_year" id="end_year" placeholder="Введіть кінцевий рік" value="{{ selected_end_year }}">
+            </div>
+            <div class="filter-group">
+                <label for="period">Виберіть період</label>
+                <select name="period" id="period">
+                    <option value="">Виберіть період</option>
+                    <option value="ww1" {% if selected_period == 'ww1' %} selected {% endif %}>Перша світова війна</option>
+                    <option value="ww2" {% if selected_period == 'ww2' %} selected {% endif %}>Друга світова війна</option>
+                    <option value="cold_war" {% if selected_period == 'cold_war' %} selected {% endif %}>Холодна війна</option>
+                    <option value="ukraine_russia" {% if selected_period == 'ukraine_russia' %} selected {% endif %}>Війна Росії з Україною</option>
+                </select>
+            </div>
+            <button type="submit">Фільтрувати</button>
+        </form>
+    </div>
+
+    <!-- Map Container -->
     <div id="map">
-        <!-- Display Folium map HTML -->
         {{ map_html|safe }}
+    </div>
+
+    <div class="footer">
+        <p>2025 © Militaris</p>
     </div>
 </body>
 </html>

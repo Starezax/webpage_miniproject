@@ -15,7 +15,6 @@ def load_battles():
         print('Not found')
         return []
 
-# Main pages
 @app.route('/')
 def index():
     return render_template('main_page.html')
@@ -24,15 +23,27 @@ def index():
 def wikipedia():
     return render_template('wikipedia.html')
 
-@app.route('/map')
+@app.route('/map', methods=['GET', 'POST'])
 def map_view():
     m = folium.Map(location=[49.5, 31.5], zoom_start=6)
 
     battles = load_battles()
-    if not battles:
-        print("Немає даних про битви в JSON файлі.")
-    
-    # Додаємо маркери на карту
+
+
+    selected_start_year = request.form.get('start_year')
+    selected_end_year = request.form.get('end_year')
+    selected_period = request.form.get('period')
+
+    if selected_start_year and selected_end_year:
+        battles = [battle for battle in battles if int(selected_start_year) <= battle['year'] <= int(selected_end_year)]
+    elif selected_start_year:
+        battles = [battle for battle in battles if battle['year'] >= int(selected_start_year)]
+    elif selected_end_year:
+        battles = [battle for battle in battles if battle['year'] <= int(selected_end_year)]
+
+    if selected_period:
+        battles = [battle for battle in battles if battle.get('period') == selected_period]
+
     for battle in battles:
         if battle.get('latitude') and battle.get('longitude'):
             folium.Marker(
@@ -40,17 +51,15 @@ def map_view():
                 popup=f"<strong>{battle['name']}</strong><br>Рік: {battle['year']}<br>{battle['info']}",
                 tooltip=battle['name']
             ).add_to(m)
-        else:
-            print(f"Невірні координати для битви: {battle['name']}")
 
     map_html = m._repr_html_()
-    return render_template('map.html', map_html=map_html)
+
+    return render_template('map.html', map_html=map_html, selected_start_year=selected_start_year, selected_end_year=selected_end_year, selected_period=selected_period)
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-# Wiki subsections
 @app.route('/wiki_ww1')
 def wiki_ww1():
     return render_template('wiki_ww1.html')
