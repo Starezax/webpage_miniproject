@@ -17,16 +17,17 @@
             min-height: 100vh;
         }
 
+
         .navigation {
             position: fixed;
+            background-color: #536b39;
+            display: flex;
             top: 0;
             left: 0;
             right: 0;
-            background-color: #536b39;
             height: 70px;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 0 50px;
             z-index: 100;
         }
@@ -38,8 +39,9 @@
 
         .navigation_links button {
             color: white;
+            /* height: 70px; */
             background-color: transparent;
-            border: 2px solid white;
+            border: none;
             border-radius: 30px;
             font-size: 20px;
             font-family: Tahoma;
@@ -221,9 +223,9 @@
                     <img src="{{ url_for('static', filename='images/RMMV_HX3_unveiled.jpg') }}">
                     <h4>RMMV HX</h4>
                     <p>HX — серія спеціально розроблених тактичних військових вантажівок виробництва Rheinmetall MAN Military Vehicles</p>
-                    <button>Дізнатися більше</button>
+                    <button onclick="window.location.href='/RMMV_HX'">Дізнатися більше</button>
                 </div>
-        
+
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/m1070.jpg') }}">
                     <h4>M1070</h4>
@@ -250,7 +252,7 @@
                     <p>Jelcz 800 — серія військових польських вантажівок виробництва Jelcz. Вантажівка побудована на чотиривісному шасі, може мати колісні формули 8×8, 8×6 та 8×4.</p>
                     <button>Дізнатися більше</button>
                 </div>
-                        
+
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/kraz.jpg') }}">
                     <h4>КрАЗ-6446</h4>
