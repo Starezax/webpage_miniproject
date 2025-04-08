@@ -275,6 +275,12 @@
                 <button onclick="window.location.href='/wikipedia'">Довідник</button>
                 <button onclick="window.location.href='/map'">Карта</button>
                 <button onclick="window.location.href='/about'">Про нас</button>
+                {% if session.get('user_id') %}
+                    <button onclick="window.location.href='/logout'">Log Out</button>
+                {% else %}
+                    <button onclick="window.location.href='/login'">Log In</button>
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                {% endif %}
             </div>
         </div>
 
