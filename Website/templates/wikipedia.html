@@ -17,29 +17,42 @@
             min-height: 100vh;
         }
 
-
         .navigation {
             position: fixed;
-            background-color: #536b39;
-            display: flex;
             top: 0;
             left: 0;
             right: 0;
+            background-color: #536b39;
             height: 70px;
-            justify-content: center;
+            display: flex;
             align-items: center;
-            padding: 0 50px;
+            justify-content: center;
             z-index: 100;
         }
 
         .navigation_links {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-center {
             display: flex;
             gap: 50px;
+            justify-content: center;
+        }
+
+        .nav-right {
+            position: absolute;
+            right: 50px;
+            display: flex;
+            gap: 20px;
         }
 
         .navigation_links button {
             color: white;
-            /* height: 70px; */
             background-color: transparent;
             border: none;
             border-radius: 30px;
@@ -191,12 +204,35 @@
 <body>
     <div class="navigation">
         <div class="navigation_links">
-            <button onclick="window.location.href='/'">Головна</button>
-            <button onclick="window.location.href='/wikipedia'">Довідник</button>
-            <button onclick="window.location.href='/map'">Карта</button>
-            <button onclick="window.location.href='/about'">Про нас</button>
+            <div class="nav-center">
+                <button onclick="window.location.href='/'">Головна</button>
+                <button onclick="window.location.href='/wikipedia'">Довідник</button>
+                <button onclick="window.location.href='/map'">Карта</button>
+                <button onclick="window.location.href='/about'">Про нас</button>
+            </div>
+    
+            <div class="nav-right">
+                {% if session.get('user_id') %}
+                    <button onclick="window.location.href='/logout'">Log Out</button>
+                {% else %}
+                    <button onclick="window.location.href='/login'">Log In</button>
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                {% endif %}
+            </div>
         </div>
     </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+                    background-color: #154c09; color: white; font-family: Tahoma;
+                    padding: 15px 25px; border-radius: 10px; z-index: 999;">
+        {% for category, message in messages %}
+            <p style="margin: 0;">{{ message }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
 
     <div class="content-wrapper">
         <div class="interactive_page">
@@ -287,5 +323,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+    setTimeout(function() {
+        const flash = document.querySelector('div[style*="position: absolute"]');
+        if (flash) {
+        flash.style.transition = 'opacity 0.5s ease';
+        flash.style.opacity = '0';
+        setTimeout(() => flash.remove(), 500);
+        }
+    }, 3000);
+    </script>
 </body>
 </html>

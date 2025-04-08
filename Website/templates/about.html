@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-
-<html>
-    <title>Militaris mainpage</title>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Militaris - Карта</title>
     <style>
-        img {
-            width: 1510px;
-            height: 1000px;
-            object-fit: cover;
-            display: flex;
-
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #bfaa6a;
+            font-family: Tahoma, sans-serif;
+            overflow-y: scroll;
+            height: 100%;
         }
-        p.heading {
-            font-weight: bold;
-        }
+        
         .navigation {
             position: fixed;
-            background-color: #536b39;
-            display: flex;
             top: 0;
             left: 0;
             right: 0;
+            background-color: #536b39;
             height: 70px;
-            justify-content: center;
+            display: flex;
             align-items: center;
-            padding: 0 50px;
+            justify-content: center;
             z-index: 100;
         }
-
+        
         .navigation_links {
+            width: 100%;
             display: flex;
-            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
-
+        
         .navigation_links button {
             color: white;
-            /* height: 70px; */
             background-color: transparent;
-            /* border: 2px solid white; */
             border: none;
             border-radius: 30px;
             font-size: 20px;
@@ -45,23 +45,81 @@
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
         }
-
+        
         .navigation_links button:hover {
             background-color: white;
             color: #536b39;
         }
+        
+        .nav-right {
+            position: absolute;
+            right: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        button[type="submit"] {
+            background-color: #536b39;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #8a9e6c;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            color: #536b39;
+            font-size: 16px;
+        }
+        
+        .leaflet-tooltip {
+            font-size: 18px !important;
+        }
+        .leaflet-popup-content {
+            font-size: 50px !important;
+        }
     </style>
-
-    </head>
-    <body style="background-color: #bfaa6a;">
-
-        <div class="navigation">
-            <div class="navigation_links">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navigation">
+        <div class="navigation_links">
+            <div class="nav-center">
                 <button onclick="window.location.href='/'">Головна</button>
                 <button onclick="window.location.href='/wikipedia'">Довідник</button>
                 <button onclick="window.location.href='/map'">Карта</button>
                 <button onclick="window.location.href='/about'">Про нас</button>
             </div>
+    
+            <div class="nav-right">
+                {% if session.get('user_id') %}
+                    <button onclick="window.location.href='/logout'">Log Out</button>
+                {% else %}
+                    <button onclick="window.location.href='/login'">Log In</button>
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                {% endif %}
+            </div>
         </div>
-    </body>
+    </div>
+
+    <div class="footer">
+        <p>2025 © Militaris</p>
+    </div>
+
+</body>
 </html>
