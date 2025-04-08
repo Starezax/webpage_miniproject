@@ -47,8 +47,8 @@
         .profile-circle {
             position: absolute;
             left: 50px;
-            width: 40px;
-            height: 40px;
+            width: 3.5rem;
+            height: 3.5rem;
             border-radius: 50%;
             background-color: #154c09;
             color: white;
@@ -145,13 +145,33 @@
             font-weight: bold;
         }
 
-        .form-group input[type="text"],
-        .form-group input[type="file"] {
+        .form-group input[type="text"] {
             width: 100%;
             padding: 10px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
+        }
+
+        .form-group input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            background-color: #154c09;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: inline-block;
+            width: 15%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #3e6b23;
         }
 
         .form-actions {
@@ -161,16 +181,20 @@
         .btn {
             background-color: #154c09;
             color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
             border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
+            border-radius: 30px;
+            display: inline-block;
             cursor: pointer;
+            text-align: center;
             transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
-            background-color: #0d3006;
+            background-color: #3e6b23;
         }
 
         .profile-stats {
@@ -226,7 +250,7 @@
         <div class="navigation_links">
             <a href="{{ url_for('profile') }}" class="profile-circle">
                 {% if profile_pic_exists %}
-                    <img src="{{ url_for('static', filename=profile_pic_path) }}" alt="{{ user.username }}">
+                    <img src="{{ url_for('static', filename=profile_pic_url) }}" alt="{{ user.username }}">
                 {% else %}
                     {{ user.username[0].upper() }}
                 {% endif %}
@@ -301,6 +325,7 @@
                 <div class="form-group">
                     <label for="profile_pic">Profile Picture</label>
                     <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
+                    <label class="custom-file-upload" for="profile_pic">Choose File</label>
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="btn">Save Changes</button>

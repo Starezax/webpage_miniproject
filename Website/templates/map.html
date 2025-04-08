@@ -152,14 +152,24 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <div class="navigation">
         <div class="navigation_links">
+            {% if session.get('user_id') %}
+            <a href="{{ url_for('profile') }}" class="profile-circle" style="position: absolute; left: 50px; width: 3.5rem; height: 3.5rem; border-radius: 50%; background-color: #154c09; color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; overflow: hidden;">
+                {% if profile_pic_exists %}
+                    <img src="{{ url_for('static', filename=profile_pic_url) }}" style="width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                    {{ session.get('username', '?')[0].upper() }}
+                {% endif %}
+            </a>
+            {% endif %}
+            
             <div class="nav-center">
                 <button onclick="window.location.href='/'">Головна</button>
                 <button onclick="window.location.href='/wikipedia'">Довідник</button>
                 <button onclick="window.location.href='/map'">Карта</button>
                 <button onclick="window.location.href='/about'">Про нас</button>
+                <button onclick="window.location.href='/forum'">Форум</button>
             </div>
     
             <div class="nav-right">
