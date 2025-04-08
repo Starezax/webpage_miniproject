@@ -226,14 +226,14 @@
 
         .stat-item .label {
             color: white;
-            font-size: 38px;
+            font-size: 3rem;
             margin-right: 20px;
             font-weight: bold;
         }
 
         .stat-item .value {
             color: white;
-            font-size: 34px;
+            font-size: 3rem;
             font-weight: bold;
         }
 
@@ -278,12 +278,22 @@
 
     <div class="navigation">
         <div class="navigation_links">
+            {% if session.get('user_id') %}
+            <a href="{{ url_for('profile') }}" class="profile-circle" style="position: absolute; left: 50px; width: 40px; height: 40px; border-radius: 50%; background-color: #154c09; color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; overflow: hidden;">
+                {% if profile_pic_exists %}
+                    <img src="{{ url_for('static', filename=profile_pic_url) }}" style="width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                    {{ session.get('username', '?')[0].upper() }}
+                {% endif %}
+            </a>
+            {% endif %}
+            
             <div class="nav-center">
                 <button onclick="window.location.href='/'">Головна</button>
                 <button onclick="window.location.href='/wikipedia'">Довідник</button>
                 <button onclick="window.location.href='/map'">Карта</button>
                 <button onclick="window.location.href='/about'">Про нас</button>
-                <button onclick="window.location.href='/add_post'">Додати статтю</button>
+                <button onclick="window.location.href='/forum'">Форум</button>
             </div>
     
             <div class="nav-right">
@@ -296,23 +306,6 @@
             </div>
         </div>
     </div>
-<!-- 
-    <h3>Найновіші дописи:</h3>
-    <div class="posts">
-        {% for post in posts %}
-            <div class="post">
-                <h4>{{ post.title }}</h4>
-                <p>{{ post.content }}</p>
-                <p><small>Автор: {{ post.user.name }} {{ post.user.surname }}</small></p>
-                
-                {% if post.user_id == session.get('user_id') %}
-                    <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}" style="display:inline;">
-                        <button type="submit">Видалити</button>
-                    </form>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </div> -->
 
     <div class="image-container">
         <div class="text-overlay">
@@ -324,17 +317,6 @@
 
     <div class="line">
         <p>ЗБРОЯ ІСТОРІЯ СПІЛЬНОТА</p>
-    </div>
-
-    <h3>Найновіші дописи:</h3>
-    <div class="posts">
-        {% for post in posts %}
-            <div class="post">
-                <h4>{{ post.title }}</h4>
-                <p>{{ post.content }}</p>
-                <p><small>Автор: {{ post.user.name }} {{ post.user.surname }}</small></p>
-            </div>
-        {% endfor %}
     </div>
 
     <div class="most_popular">
@@ -373,11 +355,9 @@
         <div class="stats-content">
             <h4 class="stats-title">СТАТИСТИКА</h4>
 
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Користувачі:</span><span class="value">12 347</span></div>
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Статті:</span><span class="value">262</span></div>
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Зображень:</span><span class="value">621</span></div>
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Битви:</span><span class="value">128</span></div>
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Зібрано коштів:</span><span class="value">189 345 грн</span></div>
+            <div class="stat-item"><span class="bullet">•</span><span class="label">Користувачі:</span><span class="value">{{ user_count }}</span></div>
+            <div class="stat-item"><span class="bullet">•</span><span class="label">Зображень:</span><span class="value">{{ pictures_count }}</span></div>
+            <div class="stat-item"><span class="bullet">•</span><span class="label">Битви:</span><span class="value">{{ battles_count }}</span></div>
         </div>
 
         <div class="stats-image">
