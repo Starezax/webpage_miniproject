@@ -286,6 +286,9 @@ def profile():
                           profile_pic_exists=profile_pic_exists, 
                           profile_pic_url=profile_pic_url)
 
+@app.route('/RMMV_HX')
+def RMMV_HX():
+    return render_template('RMMV_HX.html')
 
 @app.route('/about')
 def about():
