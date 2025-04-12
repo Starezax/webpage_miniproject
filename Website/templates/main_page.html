@@ -260,9 +260,9 @@
             height: 90%;
         }
 
-        .donate h3 {
+        .donate button {
             background-color: #154c09;
-            width: 98.4%;
+            width: 100.4%;
             margin: 0px;
             font-family: Tahoma;
             font-size: 40px;
@@ -270,6 +270,7 @@
             font-weight: bold;
             color: white;
             padding: 1%;
+            cursor: pointer;
         }
 
     </style>
@@ -367,7 +368,7 @@
 
     <div class="donate">
         <img src="{{ url_for('static', filename='images/cooler.jpg') }}">
-        <h3>ПІДТРИМАТИ УКРАЇНСЬКУ АРМІЮ</h3>
+        <button  onclick="window.open('https://savelife.in.ua/donate/#donate-army-card-once', '_blank')">ПІДТРИМАТИ УКРАЇНСЬКУ АРМІЮ</button>
     </div>
 
     <script>
