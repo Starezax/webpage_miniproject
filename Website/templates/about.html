@@ -93,6 +93,108 @@
         .leaflet-popup-content {
             font-size: 50px !important;
         }
+
+
+        .main_content {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .card {
+            display: flex;
+            background-color: #536b39;
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            margin: 1%;
+            height: 500px;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            gap: 30px;
+        }
+
+        .card img {
+            width: 75%;
+            /* height: auto; */
+            border-radius: 10px;
+        }
+
+        .card-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-text h2 {
+            margin: 0 0 10px 0;
+            color: #fff;
+
+        }
+
+        .card-text p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+        
+        .team-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2%;
+            margin-top: 20px;
+            border-radius: 50px;
+            width: 94%;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 100px;
+        }
+
+        .team-card {
+            background-color: #536b39;
+            border-radius: 15px;
+            width: 23%;
+            text-align: center;
+            height: 95%;
+            margin: 1%;
+        }
+
+        .team-card img {
+            width: 90%;
+            height: 60%;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 5%;
+        }
+
+        .team-card h3 {
+            margin: 10px 0;
+            font-size: 25px;
+            color: white;
+        }
+
+        .team-card p {
+            font-size: 14px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .team {
+            background-color: #154c09;
+            width: 94%;
+            margin: 2%;
+            border-radius: 50px;
+            color: white;
+            padding: 1%;
+            margin-top: 0px;
+            text-align: center;
+            font-size: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -129,6 +231,47 @@
 
     <div class="footer">
         <p>2025 © Militaris</p>
+    </div>
+
+
+    <div class="main_content">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/uss.jpg') }}" alt="Наша команда">
+            <div class="card-text">
+                <h2>Про нашу команду та мету сайту</h2>
+                <p>Ми - команда студентів Українського Католицького університету, які для навчального проєкту вирішили створити сайт - довідник для людей, які цікавляться історією та зброєю. 
+                    Ми раді вітати Вас на нашому сайті і дуже сподіваємось, що вам сподобається плід наших старань!
+                    Наша мета - стати достовірним джерелом інформації для усіх, хто хоче побачити історію України зі сторони війни. Побачити, як прогресувала українська армія протягом останніх двох століть.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="team">Наша команда</h2>
+
+    <div class="team-section">
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='images/Arsen.png') }}" alt="Богдан Арсен">
+            <h3>Боцко Арсен</h3>
+            <p>Back-end development</p>
+        </div>
+    
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='images/Yulian.jpg') }}" alt="Юліан">
+            <h3>Заяць Юліан</h3>
+            <p>Back-end development</p>
+        </div>
+
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='images/Bohdan.jpg') }}" alt="Павлунін Богдан">
+            <h3>Павлунишин Богдан</h3>
+            <p>Front-end development</p>
+        </div>
+
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='images/Roman.JPG') }}" alt="Плем’яш Роман">
+            <h3>Пемпусь Роман</h3>
+            <p>Front-end development</p>
+        </div>
     </div>
 
 </body>
