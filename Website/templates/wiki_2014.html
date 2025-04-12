@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Militaris Wikipedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #bfaa6a;
+            font-family: Tahoma;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #536b39;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .navigation_links {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        .nav-right {
+            position: absolute;
+            right: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navigation_links button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            font-family: Tahoma;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation_links button:hover {
+            background-color: white;
+            color: #536b39;
+        }
+
+        .profile-circle {
+            position: absolute;
+            left: 50px;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background-color: #154c09;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-wrapper {
+            display: flex;
+            margin-top: 80px;
+            width: 100%;
+        }
+
+        .interactive_page {
+            width: 100%;
+            background-color: #536b39;
+            border-radius: 51px;
+            height: 900px;
+        }
+
+        .heading {
+            background-color: #154c09;
+            width: 100%;
+            border-radius: 51px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .search {
+            background-color: #154c09;
+            border-radius: 51px;
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .interactive_time_period h3 {
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .interactive_time_period a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 3px 30px;
+        }
+
+        .main_content {
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+
+        .time_heading {
+            background-color: #154c09;
+            color: white;
+            border-radius: 40px;
+            padding: 15px;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .same_class_weapons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .page {
+            background-color: #536b39;
+            border-radius: 40px;
+            width: calc(33.33% - 20px);
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 15px;
+        }
+
+        .page img {
+            width: 90%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 40px;
+            margin: 5% auto;
+        }
+
+        .page h4 {
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .page p {
+            color: white;
+            font-size: 15px;
+            padding: 0 7%;
+            margin-bottom: 10px;
+        }
+
+        .page button {
+            background-color: #154c09;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            width: 80%;
+            padding: 10px;
+            margin-left: 10%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .page button:hover {
+            background-color: #2a7027;
+        }
+
+        .class_heading {
+            background-color: #154c09;
+            height: 60px;
+            color: white;
+            border-radius: 51px;
+            padding: 15px;
+            font-size: 25px;
+            width: 50%;
+            text-align: center;
+            margin-bottom: 2%;
+            margin-top: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <div class="navigation_links">
+            {% if session.get('user_id') %}
+            <a href="{{ url_for('profile') }}" class="profile-circle">
+                {% if profile_pic_exists %}
+                    <img src="{{ url_for('static', filename=profile_pic_url) }}" alt="Profile Picture">
+                {% else %}
+                    {{ session.get('username', '?')[0].upper() }}
+                {% endif %}
+            </a>
+            {% endif %}
+            
+            <div class="nav-center">
+                <button onclick="window.location.href='/'">Головна</button>
+                <button onclick="window.location.href='/wikipedia'">Довідник</button>
+                <button onclick="window.location.href='/map'">Карта</button>
+                <button onclick="window.location.href='/about'">Про нас</button>
+                <button onclick="window.location.href='/forum'">Форум</button>
+            </div>
+    
+            <div class="nav-right">
+                {% if session.get('user_id') %}
+                    <button onclick="window.location.href='/logout'">Log Out</button>
+                {% else %}
+                    <button onclick="window.location.href='/login'">Log In</button>
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+                    background-color: #154c09; color: white; font-family: Tahoma;
+                    padding: 15px 25px; border-radius: 10px; z-index: 999;">
+        {% for category, message in messages %}
+            <p style="margin: 0;">{{ message }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="content-wrapper">
+        <div class="interactive_page">
+            <p class="heading">Навігація по сторінці</p>
+            <p class="search">Пошук...</p>
+            <div class="interactive_time_period">
+                <h3>Часовий період:</h3>
+                <a href="/wiki_ww1">Перша світова війна</a>
+                <a href="/wiki_ww2">Друга світова війна</a>
+                <a href="/wiki_ussr">Рядянський період</a>
+                <a href="/wiki_1991">Незалежність (1991)</a>
+                <a href="/wiki_2014">Незалежність (2014)</a>
+                <a href="/wiki_2022">Незалежність (2022)</a>
+            </div>
+            <div class="interactive_time_period">
+                <h3>Клас зброї</h3>
+                <a href="#heavy_trucks">Важкі автомобілі</a>
+                <a href="#light_trucks">Легкі автомобілі</a>
+                <a href="#spec_tec">Системи ППО</a>
+                <a href="#ppo">Такт. ракетні комплекси</a>
+                <a href="#rocket_copml">РСЗВ</a>
+                <a href="#sau">САУ</a>
+                <a href="#tanks">Танки</a>
+                <a href="#mrar">МРАР</a>
+                <a href="#btr">БТР</a>
+                <a href="#pistol">Пістолети</a>
+                <a href="#pp">Пістолети-кулемети</a>
+                <a href="#ar">Штурмові гвинтівки</a>
+                <a href="#machine_gun">Кулемети</a>
+                <a href="#sniper">Снайперські гвинтівки</a>
+            </div>
+        </div>
+
+        <div class="main_content">
+            <h1 class="time_heading">Озброєння періоду незалежності - 2022 рік</h1>
+
+            <h3 id="heavy_trucks" class="class_heading">Вантажні автомобілі</h3>
+
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="light_trucks" class="class_heading">Легкі автомобілі</h3>
+
+            <div class="same_class_weapons">
+                
+            </div>
+
+
+            <h3 id="spec_tec" class="class_heading">Інженерна та спеціальна техніка</h3>
+
+            <div class="same_class_weapons">
+
+            </div>
+
+            
+            <h3 id="ppo" class="class_heading">Системи ППО</h3>
+            <div class="same_class_weapons">
+
+            </div>
+            
+            <h3 id="rocket_copml" class="class_heading">Такт. ракетні комплекси</h3>
+            <div class="same_class_weapons">
+
+            </div>
+            
+
+            <h3 id="rszv" class="class_heading">РСЗВ</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="sau" class="class_heading">САУ</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="tanks" class="class_heading">Танки</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="mrar" class="class_heading">МРАР</h3>
+            <div class="same_class_weapons">
+        
+            </div>
+
+            <h3 id="btr" class="class_heading">БТР</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="pistol" class="class_heading">Пістолети</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="pp" class="class_heading">Пістолети-кулемети</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="ar" class="class_heading">Автомати</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="machine_gun" class="class_heading">Кулемети</h3>
+            <div class="same_class_weapons">
+
+            </div>
+
+            <h3 id="sniper" class="class_heading">Снайперські гвинтівки</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Zbroyar_UAR-10_20_inch%2C_Kyiv_2021%2C_03.jpg">
+                    <h4>Зброяр Z-10</h4>
+                    <p>Зброяр Z-10 (шифр у ЗСУ — UAR-10) — самозарядна (напівавтоматична) гвинтівка з поворотним затвором та автоматикою на основі відведення порохових газів виробництва ТОВ «Зброяр».</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="https://static.wixstatic.com/media/28cee6_cb1320399c4a45bab692bf0d8a9f0b41~mv2.png/v1/fill/w_940,h_528,al_c,q_90,enc_avif,quality_auto/28cee6_cb1320399c4a45bab692bf0d8a9f0b41~mv2.png">
+                    <h4>DT SRS</h4>
+                    <p>Stealth Recon Scout (DT SRS) — снайперська гвинтівка, розроблена невеликою американською компанією Desert Tactical Arms.
+                    </p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="https://static.wixstatic.com/media/8e3970_bb3ee667def24e289380e23e5adbfe76~mv2.png/v1/fill/w_690,h_382,al_c,lg_1,q_85,enc_avif,quality_auto/8e3970_bb3ee667def24e289380e23e5adbfe76~mv2.png">
+                    <h4>WKW Wilk</h4>
+                    <p>WKW Wilk або WKW Tor — сучасна польська великокаліберна снайперська гвинтівка, виробництва Тарнувського механічного заводу. Назва «WKW Tor» розшифровується як Wielkokalibrowy Karabin Wyborowy (укр. великокаліберна снайперська гвинтівка).</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    setTimeout(function() {
+        const flash = document.querySelector('div[style*="position: absolute"]');
+        if (flash) {
+        flash.style.transition = 'opacity 0.5s ease';
+        flash.style.opacity = '0';
+        setTimeout(() => flash.remove(), 500);
+        }
+    }, 3000);
+    </script>
+</body>
+</html>
