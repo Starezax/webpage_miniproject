@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -403,6 +403,693 @@
 
             </div>
 
+        </div>
+    </div>
+
+    <script>
+    setTimeout(function() {
+        const flash = document.querySelector('div[style*="position: absolute"]');
+        if (flash) {
+        flash.style.transition = 'opacity 0.5s ease';
+        flash.style.opacity = '0';
+        setTimeout(() => flash.remove(), 500);
+        }
+    }, 3000);
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Militaris Wikipedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #bfaa6a;
+            font-family: Tahoma;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #536b39;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .navigation_links {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        .nav-right {
+            position: absolute;
+            right: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navigation_links button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            font-family: Tahoma;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation_links button:hover {
+            background-color: white;
+            color: #536b39;
+        }
+
+        .profile-circle {
+            position: absolute;
+            left: 50px;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background-color: #154c09;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-wrapper {
+            display: flex;
+            margin-top: 80px;
+            width: 100%;
+        }
+
+        .interactive_page {
+            width: 100%;
+            background-color: #536b39;
+            border-radius: 51px;
+            height: 900px;
+        }
+
+        .heading {
+            background-color: #154c09;
+            width: 100%;
+            border-radius: 51px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .search {
+            background-color: #154c09;
+            border-radius: 51px;
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .interactive_time_period h3 {
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .interactive_time_period a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 3px 30px;
+        }
+
+        .main_content {
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+
+        .time_heading {
+            background-color: #154c09;
+            color: white;
+            border-radius: 40px;
+            padding: 15px;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .same_class_weapons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .page {
+            background-color: #536b39;
+            border-radius: 40px;
+            width: calc(33.33% - 20px);
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 15px;
+        }
+
+        .page img {
+            width: 90%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 40px;
+            margin: 5% auto;
+        }
+
+        .page h4 {
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .page p {
+            color: white;
+            font-size: 15px;
+            padding: 0 7%;
+            margin-bottom: 10px;
+        }
+
+        .page button {
+            background-color: #154c09;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            width: 80%;
+            padding: 10px;
+            margin-left: 10%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .page button:hover {
+            background-color: #2a7027;
+        }
+
+        .class_heading {
+            background-color: #154c09;
+            height: 60px;
+            color: white;
+            border-radius: 51px;
+            padding: 15px;
+            font-size: 25px;
+            width: 50%;
+            text-align: center;
+            margin-bottom: 2%;
+            margin-top: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <div class="navigation_links">
+            {% if session.get('user_id') %}
+            <a href="{{ url_for('profile') }}" class="profile-circle">
+                {% if profile_pic_exists %}
+                    <img src="{{ url_for('static', filename=profile_pic_url) }}" alt="Profile Picture">
+                {% else %}
+                    {{ session.get('username', '?')[0].upper() }}
+                {% endif %}
+            </a>
+            {% endif %}
+            
+            <div class="nav-center">
+                <button onclick="window.location.href='/'">Головна</button>
+                <button onclick="window.location.href='/wikipedia'">Довідник</button>
+                <button onclick="window.location.href='/map'">Карта</button>
+                <button onclick="window.location.href='/about'">Про нас</button>
+                <button onclick="window.location.href='/forum'">Форум</button>
+            </div>
+    
+            <div class="nav-right">
+                {% if session.get('user_id') %}
+                    <button onclick="window.location.href='/logout'">Log Out</button>
+                {% else %}
+                    <button onclick="window.location.href='/login'">Log In</button>
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+                    background-color: #154c09; color: white; font-family: Tahoma;
+                    padding: 15px 25px; border-radius: 10px; z-index: 999;">
+        {% for category, message in messages %}
+            <p style="margin: 0;">{{ message }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="content-wrapper">
+        <div class="interactive_page">
+            <p class="heading">Навігація по сторінці</p>
+            <p class="search">Пошук...</p>
+            <div class="interactive_time_period">
+                <h3>Часовий період:</h3>
+                <a href="/wiki_ww2">Друга світова війна</a>
+                <a href="/wiki_ussr">Рядянський період</a>
+                <a href="/wiki_1991">Незалежність (1991)</a>
+                <a href="/wiki_2014">Незалежність (2014)</a>
+                <a href="/wiki_2022">Незалежність (2022)</a>
+            </div>
+            <div class="interactive_time_period">
+                <h3>Клас зброї</h3>
+                <a href="#heavy_trucks">Важкі автомобілі</a>
+                <a href="#light_trucks">Легкі автомобілі</a>
+                <a href="#spec_tec">Системи ППО</a>
+                <a href="#ppo">Такт. ракетні комплекси</a>
+                <a href="#rocket_copml">РСЗВ</a>
+                <a href="#sau">САУ</a>
+                <a href="#tanks">Танки</a>
+                <a href="#mrar">МРАР</a>
+                <a href="#btr">БТР</a>
+                <a href="#pistol">Пістолети</a>
+                <a href="#pp">Пістолети-кулемети</a>
+                <a href="#ar">Штурмові гвинтівки</a>
+                <a href="#machine_gun">Кулемети</a>
+                <a href="#sniper">Снайперські гвинтівки</a>
+            </div>
+        </div>
+
+        <div class="main_content">
+            <h1 class="time_heading">Озброєння періоду незалежності - 2022 рік</h1>
+
+            <h3 id="heavy_trucks" class="class_heading">Вантажні автомобілі</h3>
+
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Kraz_6322_(cropped).jpg') }}">
+                    <h4>КрАЗ-6322</h4>
+                    <p>Універсальний вантажний автомобіль підвищеної прохідності, широко застосовувався в ЗСУ для транспортування особового складу і вантажів. Виробляється на Кременчуцькому автозаводі.</p>
+                    <button onclick="window.location.href='/RMMV_HX'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Interpolitex_2011_(402-47).jpg') }}">
+                    <h4>ЗІЛ-13</h4>
+                    <p>Радянський вантажний автомобіль, створений у 1966 році. Має колісну формулу 6х6, створювався як заміна вантажівки ЗІЛ-157.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Interpolitex_2011_(402-15).jpg') }}">
+                    <h4>Урал-4320</h4>
+                    <p> Вантажний автомобіль підвищеної прохідності подвійного призначення, з колісною формулою 6х6, що вироблявся зокрема — для використання в збройних силах, в сімействі уніфікованих армійських автомобілів «Суша» до 1998 року.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+            </div>
+
+            <h3 id="light_trucks" class="class_heading">Легкі автомобілі</h3>
+
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/ParkPatriot2015part4-12.jpg') }}">
+                    <h4>АЗ-469</h4>
+                    <p>УАЗ-469 — повнопривідний легковий автомобіль підвищеної прохідності (позашляховик), що виробляється на Ульянівському автомобільному заводі. Це перший у світі повністю понтонний повний привід у масовому виробництві.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/2022_Mitsubishi_Outlander_SE_S-AWC,_07-29-2022.jpg') }}">
+                    <h4>Mitsubishi Outlander XL</h4>
+                    <p>Позашляховик, який активно використовувався ЗСУ у 2014 році для перевезення особового складу та вантажів. Висока прохідність та надійність зробили його популярним серед військових підрозділів.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/l200.jpg') }}">
+                    <h4> Mitsubishi L200</h4>
+                    <p>Mitsubishi L200 активно використовувався Збройними Силами України ще до 2014 року як легковий пікап для оперативного пересування, транспортування особового складу та невеликих вантажів. Завдяки повному приводу та надійності, він зарекомендував себе як зручний засіб для виконання завдань у складних умовах бездоріжжя.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+
+            <h3 id="spec_tec" class="class_heading">Інженерна та спеціальна техніка</h3>
+
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/MT-LB-T-23-2.jpg') }}">
+                    <h4>МТ-ЛБ</h4>
+                    <p>Універсальний тягач легкої броні, використовувався для евакуації, перевезення вантажів та буксирування. Також служив платформою для спецтехніки.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/IMR-2_Ukraine.jpg') }}">
+                    <h4>ІМР-2</h4>
+                    <p>Інженерна машина розгородження на базі танка Т-72, застосовувалась для розчищення завалів та прокладення проходів у мінних полях.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/OpenWater2017qualifying-44.jpg') }}">
+                    <h4>БАТ-2</h4>
+                    <p>Інженерний гусеничний бульдозер, використовувався для облаштування позицій і підготовки шляхів. Входив до складу інженерних військ ЗСУ.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+                
+
+            
+            <h3 id="ppo" class="class_heading">Системи ППО</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/ZRK_BUK_M1_2005_G1.jpg') }}">
+                    <h4>Бук-М1</h4>
+                    <p>ЗРК середньої дальності, здатен уражати літаки, гелікоптери та крилаті ракети. Залишався на озброєнні Повітряних Сил України.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/C-300.jpg') }}">
+                    <h4>С-300</h4>
+                    <p>С-300 (за кодифікацією НАТО — SA-10 Grumble, SA-12 Giant/Gladiator, SA-20 Gargoyle) — сімейство радянських зенітно-ракетних комплексів середнього радіуса дії.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/UA_anti-air_battalion_of_30th_bgd_02.jpg') }}">
+                    <h4>Стріла-10</h4>
+                    <p>ЗРК малої дальності на базі гусеничного шасі, призначений для захисту наземних військ. Використовувався в сухопутних військах ЗСУ.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+            <h3 id="rocket_copml" class="class_heading">Такт. ракетні комплекси</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/TOCHKA.jpg') }}">
+                    <h4>Точка</h4>
+                    <p>«То́чка» — радянський тактичний (дивізійний) ракетний комплекс. Розробка почалася 1968 року у Коломенському КБ машинобудування.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/elbrus.jpg') }}">
+                    <h4>Ельбрус</h4>
+                    <p>Радянський ракетний комплекс із балістичною ракетою, був знятий з бойового чергування, але зберігався на базах зберігання як технічний резерв.
+                    </p>
+                    <button>Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/HRIM.jpg') }}">
+                    <h4>Грім-2</h4>
+                    <p>"Грім-2" або ОТРК «Сапсан» — український оперативно-тактичний ракетний комплекс, що перебуває на стадії розробки конструкторським бюро «Південне». Розробляється з 2013 року на базі попередніх розробок за проєктами «Борисфен» та БФРК «Сапсан».</p>
+                    <button>Дізнатися більше</button>
+                </div>
+            </div>
+
+            <h3 id="rszv" class="class_heading">РСЗВ</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/GRAD.jpg') }}">
+                    <h4>БМ-21 "Град"</h4>
+                    <p>Наймасовіша РСЗВ на озброєнні ЗСУ у 2014–2021 роках, мала калібр 122 мм. Використовувалась для ураження скупчень живої сили та техніки.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/YRAGAN.jpg') }}">
+                    <h4>Ураган (БМ-27)</h4>
+                    <p>РСЗВ великого калібру (220 мм), здатна завдавати потужних ударів по тилах ворога. В Україні мала обмежене застосування.
+                    </p>
+                    <button>Дізнатися більше</button>
+                </div>
+                <div class="page">                    
+                    <img src="{{ url_for('static', filename='images/SMERCH.jpg') }}">
+                    <h4>БМ-30 "Смерч"</h4>
+                    <p>Потужна радянська РСЗВ з дальністю до 70 км. У 2014 році перебувала в підрозділах Ракетних військ та артилерії ЗСУ.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+            <h3 id="sau" class="class_heading">САУ</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/GVOSDICA.jpg') }}">
+                    <h4>2С1 "Гвоздика"</h4>
+                    <p>Самохідна гаубиця 122 мм, широко використовувалася в артилерії ЗСУ у 2014 році. Маневрена та амфібійна.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/AKATSIYA.jpg') }}">
+                    <h4>2С3 "Акація"</h4>
+                    <p>САУ 152 мм, призначена для знищення укріплень та техніки. Була у бойовому складі артилерійських бригад.
+                    </p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/kk.jpg') }}">
+                    <h4> 2С5 "Гіацинт-С"</h4>
+                    <p>Потужна самохідна гармата великої дальності з калібром 152 мм. Призначена для ураження стратегічних об'єктів.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+            </div>
+            <h3 id="tanks" class="class_heading">Танки</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Т-64.jpg') }}">
+                    <h4>Т-64БВ</h4>
+                    <p>Основний бойовий танк, який був основою танкових військ України з часів незалежності. Брав активну участь у бойових діях на Донбасі у 2014 році.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Т-72.jpg') }}">
+                    <h4>Т-72А</h4>
+                    <p>Постачався в обмеженій кількості після розпаду СРСР. Використовувався для посилення резервів у 2014 році.
+                    </p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Т-80.jpg') }}">
+                    <h4>Т-80БВ</h4>
+                    <p>Швидкий танк з газотурбінним двигуном, використовувався десантно-штурмовими військами. Обмежено, але фіксовано у 2014</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+            <h3 id="mrar" class="class_heading">МРАР</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/SPARTANNN.jpg') }}">
+                    <h4>КРАЗ-Спартан</h4>
+                    <p>Ліцензійна версія канадського броньовика, виготовлялася в Україні. Надходила у війська вже у 2014 році.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    
+                    <img src="{{ url_for('static', filename='images/M1114_cruising_by_mrkoww.jpg') }}">
+                    <h4>HMMWV (Humvee)</h4>
+                    <p>Американський багатоцільовий позашляховик. Поставлявся у вигляді допомоги, перші зразки з’явились у 2014 році.
+                    </p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/U.S.Marine_Cougar_H_EOD.jpg') }}">
+                    <h4>Cougar</h4>
+                    <p>«Кугуар» — американська машина з захистом від мін і засідок (MRAP), розроблена на початку 2000-х років компанією Force Protection[en] з використанням технологій південноафриканської компанії Olifant Manufacturing Company.[5]</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+            <h3 id="btr" class="class_heading">БТР</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/BTR70_002.jpg') }}">
+                    <h4>БТР-70</h4>
+                    <p>Радянський бронетранспортер, широко використовувався у частинах ЗСУ. Брав участь у бойових діях з початку конфлікту.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Ukrainian_BTR-80.jpg') }}">
+                    <h4>БТР-80</h4>
+                    <p>Модернізована версія БТР-70, краща прохідність та захист. На озброєнні ЗСУ з 90-х років.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/BTR-3.jpg') }}">                
+                    <h4>БТР-3Е1
+                    </h4>
+                    <p>Українська розробка початку 2000-х. Уже перебував на озброєнні у 2014 році.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+            <h3 id="pistol" class="class_heading">Пістолети</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Fort-17.jpg">
+                    <h4>Fort-17</h4>
+                    <p>Форт-17 — ручний самозарядний пістолет калібру 9 мм, призначений для ураження живої сили противника на відстані до 50 м. Пістолет Форт-17 є подальшим розвитком пістолета Форт-12.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+        
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/MakarovPM.jpg') }}">
+                    <h4>ПМ (Пістолет Макарова)</h4>
+                    <p>Основний службовий пістолет радянських офіцерів. Компактний, надійний, калібр 9×18 мм.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Fort-12.jpg') }}">
+                    <h4>Форт-12</h4>
+                    <p>Український пістолет, прийнятий на озброєння в 1998 році. Використовувався як штатна зброя офіцерів та правоохоронців.</p>
+                    <button>Дізнатися більше</button>
+                </div>
+
+            </div>
+
+            <h3 id="pp" class="class_heading">Пістолети-кулемети</h3>
+                <div class="same_class_weapons">
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/KEDR.jpg') }}">
+                        <h4>ПП-91 "Кедр"</h4>
+                        <p>Російський пістолет-кулемет, обмежено використовувався в спецпідрозділах МВС та СБУ. Компактна зброя для ближнього бою.</p>
+                        <button onclick="window.location.href='https://en.wikipedia.org/wiki/PP-91_Kedr'">Дізнатися більше</button>
+                    </div>
+
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/BIZON.jpg') }}">
+                        <h4>ПП-19 "Бизон"</h4>
+                        <p>Використовувався у спецпідрозділах, переважно в підрозділах СБУ. Працює на основі АКС-74У.</p>
+                        <button onclick="window.location.href='https://en.wikipedia.org/wiki/PP-19_Bizon'">Дізнатися більше</button>
+                    </div>
+
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/UZIII.jpg') }}">
+                        <h4>IMI Uzi</h4>
+                        <p>Невелика кількість імпортованих одиниць Uzi була на озброєнні спецслужб України ще з 90-х років.</p>
+                        <button onclick="window.location.href='https://en.wikipedia.org/wiki/Uzi'">Дізнатися більше</button>
+                    </div>
+                </div>
+
+            <h3 id="ar" class="class_heading">Автомати</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/AK47.jpg') }}">
+                    <h4>AK-47</h4>
+                    <p>Легендарний автомат Калашникова, на озброєнні з 1949 року. Широко використовувався у всіх родах військ України ще з радянського періоду.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/AKM.jpg') }}">
+                    <h4>AKM</h4>
+                    <p> Модернізована версія АК-47 із покращеною ергономікою, меншою масою та можливістю стрільби чергами. Основний автомат радянської армії у 60-80-х роках</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Ak74assault.jpg') }}">
+                    <h4>AK-74</h4>
+                    <p>Новіше покоління автоматів Калашникова, адаптоване під патрон 5,45×39 мм. Був активно введений в експлуатацію в 1980-х роках і лишався на озброєнні в Україні на момент розпаду СРСР.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+            </div>
+            <h3 id="machine_gun" class="class_heading">Кулемети</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Iraq_RPK_Machine_Gun.jpg') }}">
+                    <h4>РПК</h4>
+                    <p>Ручний кулемет Калашникова на основі автомата АКМ. Служив підтримкою піхоти на відстанях до 500 м</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/pkkk.jpg') }}">
+                    <h4>ПК (ПКМ)</h4>
+                    <p> Єдиний кулемет середнього калібру. Надійний, універсальний і потужний, був основою вогневої підтримки у механізованих частинах.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/UTIOS.jpg') }}">
+                    <h4>НСВ "Утьос"</h4>
+                    <p>Крупнокаліберний кулемет, встановлювався на бронетехніці, зокрема на танках Т-64.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+            </div>
+            <h3 id="sniper" class="class_heading">Снайперські гвинтівки</h3>
+            <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/MOSINA.jpg') }}">
+                    <h4>Мосіна</h4>
+                    <p>Гвинтівка Мосіна-Нагана(мосінка або трьохлінійка) — магазинна військова гвинтівка, яку використовували військові сили Російської імперії, Радянського союзу і багатьох інших держав</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+                
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/SVD_Dragunov.jpg') }}">
+                    <h4>СВД (Драгунова)</h4>
+                    <p>Напівавтоматична снайперська гвинтівка, яка з'явилась на озброєнні в 1963 році. Основна снайперська зброя армії СРСР і України в 1991 році.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/ffff.jpg') }}">
+                    <h4>ВСС «Вінторез»</h4>
+                    <p>Спеціальна снайперська гвинтівка з глушником та інтегрованим оптичним прицілом. Використовувалась спецпідрозділами КДБ, згодом — СБУ.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+            </div>
         </div>
     </div>
 
