@@ -97,7 +97,7 @@
         }
 
         .interactive_page {
-            width: 100%;
+            width: 20%;
             background-color: #536b39;
             border-radius: 51px;
             height: 900px;
@@ -145,6 +145,7 @@
         .main_content {
             flex-grow: 1;
             padding: 0 20px;
+            width: 70%;
         }
 
         .time_heading {
@@ -273,7 +274,6 @@
             <p class="search">Пошук...</p>
             <div class="interactive_time_period">
                 <h3>Часовий період:</h3>
-                <a href="/wiki_ww1">Перша світова війна</a>
                 <a href="/wiki_ww2">Друга світова війна</a>
                 <a href="/wiki_ussr">Рядянський період</a>
                 <a href="/wiki_1991">Незалежність (1991)</a>
@@ -298,111 +298,293 @@
                 <a href="#sniper">Снайперські гвинтівки</a>
             </div>
         </div>
-
+        <!-- GAZ-AA -->
         <div class="main_content">
-            <h1 class="time_heading">Озброєння періоду незалежності - 2022 рік</h1>
-
+            <h1 class="time_heading">Озброєння України станом на 1991 рік</h1>
             <h3 id="heavy_trucks" class="class_heading">Вантажні автомобілі</h3>
-
-            <div class="same_class_weapons">
-
-            </div>
+                <div class="same_class_weapons">
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/GAZ-AA.jpg') }}">
+                        <h4>ГАЗ-АА</h4>
+                        <p> ГАЗ-АА — радянський середньотоннажний вантажний автомобіль з вантажопідйомністю 1,5 тонни, що широко використовувався в Україні в період Другої світової війни та в післявоєнний час.</p>
+                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    </div>
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/ZIS-5.jpg') }}">
+                        <h4> ЗІС-5</h4>
+                        <p>ЗІС-5 — радянський вантажний автомобіль, який став основним середньотоннажним вантажним автомобілем СРСР. Його використання в Україні продовжувалося й після розпаду СРСР.</p>
+                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    </div>
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/IAG-6.jpg') }}">
+                        <h4>ЯГ-6</h4>
+                        <p>ЯГ-6 — радянський важкий вантажний автомобіль з підвищеною прохідністю, що використовувався в Україні для перевезення вантажів у складних умовах.</p>
+                        <button>Дізнатися більше</button>
+                </div>
 
             <h3 id="light_trucks" class="class_heading">Легкі автомобілі</h3>
 
             <div class="same_class_weapons">
-                
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/GAZ-M1.jpg') }}">
+                    <h4> ГАЗ-М1</h4>
+                    <p>ГАЗ-М1 — легковий автомобіль, який використовувався в Україні не лише для цивільних потреб, а й для перевезення офіцерів та командування.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/GAZ-640.jpg') }}">
+                    <h4>ГАЗ-64</h4>
+                    <p>ГАЗ-64 — радянський військовий повноприводний легковий автомобіль із спрощеним відкритим кузовом, який мав вирізи замість дверей (тип ранебаут — runabout)</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/GAZ_67B.jpg') }}">
+                    <h4>ГАЗ-67</h4>
+                    <p>ГАЗ-67 — радянський легкий автомобіль з повним приводом, який використовувався як джип для армії та інших потреб військових підрозділів.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
-
-
-            <h3 id="spec_tec" class="class_heading">Інженерна та спеціальна техніка</h3>
-
-            <div class="same_class_weapons">
-
-            </div>
-
-            
             <h3 id="ppo" class="class_heading">Системи ППО</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/C-300.jpg') }}">
+                    <h4>С-300</h4>
+                    <p> С-300 — радянська система протиповітряної оборони, яка використовувалася для захисту від літаків і ракет. Після 1991 року залишалась на озброєнні в Україні.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Sa6_1.jpg') }}">
+                    <h4>Куб</h4>
+                    <p> Куб — радянська зенітно-ракетна система, яка забезпечувала захист від повітряних загроз на низьких та середніх висотах.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/TOR.jpg') }}">
+                    <h4>Тор</h4>
+                    <p> Тор — система ППО, здатна вести вогонь по низьколетючим цілям і відзначалася високою мобільністю.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
-            
-            <h3 id="rocket_copml" class="class_heading">Такт. ракетні комплекси</h3>
+            <h3 id="rszv" class="class_heading">РСЗВ+тактичні ракетні комплекси</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/TOCHKA.jpg') }}">
+                    <h4>9К79 «Точка»</h4>
+                    <p>9К79 «Точка» — радянський тактичний ракетний комплекс, що використовувався з високоточними боєприпасами для ураження на великих відстанях.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
-            </div>
-            
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/SKUD.jpg') }}">
+                    <h4>Р-17 «Скуд»</h4>
+                    <p>Р-17 «Скуд» — радянський тактичний ракетний комплекс, який був оснащений ракетами, здатними доставляти ядерні боєзаряди.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
-            <h3 id="rszv" class="class_heading">РСЗВ</h3>
-            <div class="same_class_weapons">
-
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/GRAD.jpg') }}">
+                    <h4>БМ-21 «Град»</h4>
+                    <p> БМ-21 «Град» — радянська реактивна система залпового вогню, яка стала основною системою РСЗВ в Україні та інших країнах.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
 
             <h3 id="sau" class="class_heading">САУ</h3>
             <div class="same_class_weapons">
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/GVOSDIKA.jpg') }}">
+                        <h4>2С1 "Гвоздика"</h4>
+                        <p> Радянська самохідна гаубиця калібру 122 мм на гусеничному шасі. Відзначається високою мобільністю та можливістю десантування.</p>
+                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    </div>
+    
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/AKATSIUA.jpg') }}">
+                        <h4> 2С3 "Акація"</h4>
+                        <p>САУ калібру 152 мм, здатна уражати цілі на великій відстані. Має добре броньовану башту й високу вогневу міць.</p>
+                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    </div>
+    
+                    <div class="page">
+                        <img src="{{ url_for('static', filename='images/kk.jpg') }}">
+                        <h4> 2С5 "Гіацинт-С"</h4>
+                        <p>Потужна самохідна гармата великої дальності з калібром 152 мм. Призначена для ураження стратегічних об'єктів.</p>
+                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    </div>
+                
 
             </div>
 
             <h3 id="tanks" class="class_heading">Танки</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/N-64.jpg') }}">
+                    <h4>T-64</h4>
+                    <p>Основний бойовий танк, розроблений у Харкові. Відзначається високим рівнем бронювання та автоматом заряджання.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/t-72.jpg') }}">
+                    <h4>Т-72</h4>
+                    <p>Масовий радянський танк, широко використовувався в арміях Варшавського договору. В Україні перебував на озброєнні після 1991 року.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/T-80.jpg') }}">
+                    <h4>T-80</h4>
+                    <p>Сучасний радянський танк з газотурбінним двигуном, високою маневреністю та динамічним захистом.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
             </div>
-
-            <h3 id="mrar" class="class_heading">МРАР</h3>
-            <div class="same_class_weapons">
-        
-            </div>
-
             <h3 id="btr" class="class_heading">БТР</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/BT-12.jpg') }}">
+                    <h4>БТР-60</h4>
+                    <p>Перша масова модель радянського бронетранспортера з колісною формулою 8×8. Використовувався для транспортування піхоти.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/BTR70_002.jpg') }}">
+                    <h4>БТР-70</h4>
+                    <p>Удосконалена версія БТР-60 з потужнішими двигунами та кращою захищеністю.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Ukrainian_BTR-80.jpg') }}">
+                    <h4>БТР-80</h4>
+                    <p>Модернізований бронетранспортер з поліпшеною прохідністю та новими озброєннями. Широко використовувався в Україні.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
 
             <h3 id="pistol" class="class_heading">Пістолети</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/TOK.jpg') }}">
+                    <h4>Пістолет-Токарєва</h4>
+                    <p>Пістолет ТТ («Тульський — Токарєв») — самозарядний 7,62-мм пістолет ТТ — особиста зброя нападу або захисту. Розроблений Ф. В. Токарєвим у 1930 році</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/MakarovPM.jpg') }}">
+                    <h4>ПМ (Пістолет Макарова)</h4>
+                    <p>Основний службовий пістолет радянських офіцерів. Компактний, надійний, калібр 9×18 мм.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/PMS.jpg') }}">
+                    <h4>ПСМ (Пістолет Самозарядний Малогабаритний)</h4>
+                    <p>Субкомпактний пістолет для офіцерів і служб безпеки. Дуже тонкий, калібр 5,45 мм.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
 
             <h3 id="pp" class="class_heading">Пістолети-кулемети</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/PPSH-41.jpg') }}">
+                    <h4>ППШ-41</h4>
+                    <p>7,62-мм пістолет-кулемет зразка 1941 року системи Шпагіна (ППШ) — радянський пістолет-кулемет, розроблений в 1940 році конструктором Г. С. Шпагіним під набій 7,62 × 25 мм ТТ </p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/PPS-43.jpg') }}">
+                    <h4>ППС-43</h4>
+                    <p>7,62-мм пістолети-кулемети зразків 1942 і 1943 років системи Судаєва (ППС)[прим. 1] — варіанти пістолета-кулемета, розробленого радянським конструктором Олексієм Судаєвим в 1942 році</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/PPD-34.jpg') }}">
+                    <h4>ППД-34</h4>
+                    <p>7,62-мм пістолети-кулемети зразка 1940 років системи Дегтярьова (індекс ГРАУ -56-А-133) — модифікація пістолета-кулемета, розробленого радянським зброярем Василем Дегтярьовим в початку 1930-х років.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
 
             <h3 id="ar" class="class_heading">Автомати</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/AK47.jpg') }}">
+                    <h4>AK-47</h4>
+                    <p>Легендарний автомат Калашникова, на озброєнні з 1949 року. Широко використовувався у всіх родах військ України ще з радянського періоду.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/AKM.jpg') }}">
+                    <h4>AKM</h4>
+                    <p> Модернізована версія АК-47 із покращеною ергономікою, меншою масою та можливістю стрільби чергами. Основний автомат радянської армії у 60-80-х роках</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Ak74assault.jpg') }}">
+                    <h4>AK-74</h4>
+                    <p>Новіше покоління автоматів Калашникова, адаптоване під патрон 5,45×39 мм. Був активно введений в експлуатацію в 1980-х роках і лишався на озброєнні в Україні на момент розпаду СРСР.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
 
             <h3 id="machine_gun" class="class_heading">Кулемети</h3>
             <div class="same_class_weapons">
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/Iraq_RPK_Machine_Gun.jpg') }}">
+                    <h4>РПК</h4>
+                    <p>Ручний кулемет Калашникова на основі автомата АКМ. Служив підтримкою піхоти на відстанях до 500 м</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
 
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/pkkk.jpg') }}">
+                    <h4>ПК (ПКМ)</h4>
+                    <p> Єдиний кулемет середнього калібру. Надійний, універсальний і потужний, був основою вогневої підтримки у механізованих частинах.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
+
+                <div class="page">
+                    <img src="{{ url_for('static', filename='images/MAKSS.jpg') }}">
+                    <h4>Кулемет-Максим</h4>
+                    <p>Кулемет Максима зразка 1910 року (Індекс ГРАУ — 56-П-421) — станковий кулемет, варіант британського кулемета Максима, який широко використовувався російською і радянською арміями під час Першої світової і Другої світової війн</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                </div>
             </div>
-
+                
             <h3 id="sniper" class="class_heading">Снайперські гвинтівки</h3>
             <div class="same_class_weapons">
                 <div class="page">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Zbroyar_UAR-10_20_inch%2C_Kyiv_2021%2C_03.jpg">
-                    <h4>Зброяр Z-10</h4>
-                    <p>Зброяр Z-10 (шифр у ЗСУ — UAR-10) — самозарядна (напівавтоматична) гвинтівка з поворотним затвором та автоматикою на основі відведення порохових газів виробництва ТОВ «Зброяр».</p>
-                    <button>Дізнатися більше</button>
+                    <img src="{{ url_for('static', filename='images/MOSINA.jpg') }}">
+                    <h4>Мосіна</h4>
+                    <p>Гвинтівка Мосіна-Нагана(мосінка або трьохлінійка) — магазинна військова гвинтівка, яку використовували військові сили Російської імперії, Радянського союзу і багатьох інших держав</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
                 </div>
-        
+                
                 <div class="page">
-                    <img src="https://static.wixstatic.com/media/28cee6_cb1320399c4a45bab692bf0d8a9f0b41~mv2.png/v1/fill/w_940,h_528,al_c,q_90,enc_avif,quality_auto/28cee6_cb1320399c4a45bab692bf0d8a9f0b41~mv2.png">
-                    <h4>DT SRS</h4>
-                    <p>Stealth Recon Scout (DT SRS) — снайперська гвинтівка, розроблена невеликою американською компанією Desert Tactical Arms.
-                    </p>
-                    <button>Дізнатися більше</button>
+                    <img src="{{ url_for('static', filename='images/SVD_Dragunov.jpg') }}">
+                    <h4>СВД (Драгунова)</h4>
+                    <p>Напівавтоматична снайперська гвинтівка, яка з'явилась на озброєнні в 1963 році. Основна снайперська зброя армії СРСР і України в 1991 році.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
                 </div>
-
                 <div class="page">
-                    <img src="https://static.wixstatic.com/media/8e3970_bb3ee667def24e289380e23e5adbfe76~mv2.png/v1/fill/w_690,h_382,al_c,lg_1,q_85,enc_avif,quality_auto/8e3970_bb3ee667def24e289380e23e5adbfe76~mv2.png">
-                    <h4>WKW Wilk</h4>
-                    <p>WKW Wilk або WKW Tor — сучасна польська великокаліберна снайперська гвинтівка, виробництва Тарнувського механічного заводу. Назва «WKW Tor» розшифровується як Wielkokalibrowy Karabin Wyborowy (укр. великокаліберна снайперська гвинтівка).</p>
-                    <button>Дізнатися більше</button>
+                    <img src="{{ url_for('static', filename='images/ffff.jpg') }}">
+                    <h4>ВСС «Вінторез»</h4>
+                    <p>Спеціальна снайперська гвинтівка з глушником та інтегрованим оптичним прицілом. Використовувалась спецпідрозділами КДБ, згодом — СБУ.</p>
+                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
                 </div>
-
             </div>
+
+        </div>
 
         </div>
     </div>
