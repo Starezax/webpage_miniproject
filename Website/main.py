@@ -44,6 +44,16 @@ with app.app_context():
 
 @app.route('/forum', methods=['GET', 'POST'])
 def forum():
+    profile_pic_exists = False
+    profile_pic_url = None
+    
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+
     if 'user_id' not in session:
         flash('Ввійдіть в аккаунт щоб добавляти пости', category='error')
         return redirect(url_for('login'))
@@ -61,7 +71,9 @@ def forum():
         return redirect(url_for('forum'))
 
     posts = Post.query.all()
-    return render_template('forum.html', posts=posts)
+    return render_template('forum.html', posts=posts, 
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 
 
@@ -178,6 +190,7 @@ def index():
     user_count = User.query.count()
     pictures_count = len(os.listdir(os.path.join(app.static_folder, "images")))
     battles_count = len(load_battles())
+
     profile_pic_exists = False
     profile_pic_url = None
     
@@ -196,10 +209,30 @@ def index():
 
 @app.route('/wikipedia')
 def wikipedia():
-    return render_template('wikipedia.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+    
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+    
+    return render_template('wikipedia.html', 
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/map', methods=['GET', 'POST'])
 def map_view():
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
     m = folium.Map(location=[49.5, 31.5], zoom_start=6)
 
     battles = load_battles()
@@ -208,17 +241,38 @@ def map_view():
     selected_end_year = request.form.get('end_year')
     selected_period = request.form.get('period')
 
-    if selected_start_year and selected_end_year:
-        battles = [battle for battle in battles if int(selected_start_year) <= battle['year'] <= int(selected_end_year)]
-    elif selected_start_year:
-        battles = [battle for battle in battles if battle['year'] >= int(selected_start_year)]
-    elif selected_end_year:
-        battles = [battle for battle in battles if battle['year'] <= int(selected_end_year)]
+    if selected_end_year < selected_start_year:
+        flash('Початковий рік мусить бути меншим ніж кінцевий', category='error')
+
+
+
+    filtered_battles = battles
 
     if selected_period:
-        battles = [battle for battle in battles if battle.get('period') == selected_period]
+        filtered_battles = [
+            battle for battle in filtered_battles
+            if battle["period_section"] == selected_period
+        ]
 
-    for battle in battles:
+    if selected_start_year and selected_start_year.isdigit():
+        filtered_battles = [
+            battle for battle in filtered_battles
+            if (
+                (isinstance(battle['year'], int) and battle['year'] >= int(selected_start_year)) or
+                (isinstance(battle['year'], str) and int(battle['year'].split('-')[0]) >= int(selected_start_year))
+            )
+        ]
+
+    if selected_end_year and selected_end_year.isdigit():
+        filtered_battles = [
+            battle for battle in filtered_battles
+            if (
+                (isinstance(battle['year'], int) and battle['year'] <= int(selected_end_year)) or
+                (isinstance(battle['year'], str) and int(battle['year'].split('-')[-1]) <= int(selected_end_year))
+            )
+        ]
+
+    for battle in filtered_battles:
         if battle.get('latitude') and battle.get('longitude'):
             popup_html = f"""
             <div style="font-size: 16px;">
@@ -227,9 +281,9 @@ def map_view():
                 {battle['info']}
             </div>
             """
-            
+
             tooltip_html = f'<span style="font-size: 16px;">{battle["name"]}</span>'
-            
+
             folium.Marker(
                 location=[battle['latitude'], battle['longitude']],
                 popup=folium.Popup(popup_html, max_width=300),
@@ -238,8 +292,13 @@ def map_view():
 
     map_html = m._repr_html_()
 
-    return render_template('map.html', map_html=map_html, selected_start_year=selected_start_year, selected_end_year=selected_end_year, selected_period=selected_period)
-
+    return render_template('map.html',
+                           map_html=map_html,
+                           selected_start_year=selected_start_year,
+                           selected_end_year=selected_end_year,
+                           selected_period=selected_period,
+                           profile_pic_exists=profile_pic_exists,
+                           profile_pic_url=profile_pic_url)
 
 
 @app.route('/profile', methods=['GET', 'POST'])
@@ -292,7 +351,18 @@ def RMMV_HX():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('about.html', 
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/wiki_ww1')
 def wiki_ww1():

@@ -12,17 +12,17 @@
         }
 
         .navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #536b39;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #536b39;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+}
 
         .navigation_links {
             width: 100%;
@@ -75,6 +75,7 @@
             display: flex;
             flex-direction: column;
             gap: 25px;
+            margin-top: 70px; 
         }
 
         #sidebar h3 {
@@ -210,10 +211,10 @@
                 <label for="period">Виберіть період</label>
                 <select name="period" id="period">
                     <option value="">Виберіть період</option>
-                    <option value="ww1" {% if selected_period == 'ww1' %} selected {% endif %}>Перша світова війна</option>
-                    <option value="ww2" {% if selected_period == 'ww2' %} selected {% endif %}>Друга світова війна</option>
-                    <option value="cold_war" {% if selected_period == 'cold_war' %} selected {% endif %}>Холодна війна</option>
-                    <option value="ukraine_russia" {% if selected_period == 'ukraine_russia' %} selected {% endif %}>Війна Росії з Україною</option>
+                    <option value="WW1" {% if selected_period == 'WW1' %} selected {% endif %}>Перша світова війна</option>
+                    <option value="WW2" {% if selected_period == 'WW2' %} selected {% endif %}>Друга світова війна</option>
+                    <option value="CR" {% if selected_period == 'CW' %} selected {% endif %}>Холодна війна</option>
+                    <option value="UR" {% if selected_period == 'UR' %} selected {% endif %}>Війна Росії з Україною</option>
                 </select>
             </div>
             <button type="submit">Фільтрувати</button>

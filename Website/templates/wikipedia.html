@@ -82,6 +82,7 @@
             font-size: 20px;
             cursor: pointer;
             overflow: hidden;
+            text-decoration: none;
         }
 
         .profile-circle img {
@@ -255,18 +256,6 @@
             </div>
         </div>
     </div>
-    
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
-                    background-color: #154c09; color: white; font-family: Tahoma;
-                    padding: 15px 25px; border-radius: 10px; z-index: 999;">
-        {% for category, message in messages %}
-            <p style="margin: 0;">{{ message }}</p>
-        {% endfor %}
-        </div>
-    {% endif %}
-    {% endwith %}
 
     <div class="content-wrapper">
         <div class="interactive_page">
