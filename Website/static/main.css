@@ -1,5 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     overflow-y: scroll;
+}
+
+body {
+    background-color: #bfaa6a;
+    font-family: Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 ::-webkit-scrollbar {
@@ -19,4 +35,455 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #3e6b23;
+}
+
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #536b39;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+}
+
+.navigation_links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nav-center {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.nav-right {
+    position: absolute;
+    right: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation_links button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-family: Tahoma;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navigation_links button:hover {
+    background-color: white;
+    color: #536b39;
+}
+
+.profile-circle {
+    position: absolute;
+    left: 50px;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: #154c09;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: #2e4a26;
+    width: 220px;
+    padding: 20px;
+    color: white;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 70px;
+}
+
+#sidebar h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f4f4f4;
+    font-weight: bold;
+    text-align: center;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group input, 
+.filter-group select,
+.add-post-form input,
+.add-post-form textarea {
+    width: 85%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #536b39;
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.add-post-form input,
+.add-post-form textarea {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.filter-group input:focus, 
+.filter-group select:focus,
+.add-post-form input:focus,
+.add-post-form textarea:focus {
+    border-color: #8a9e6c;
+    outline: none;
+    box-shadow: 0 0 10px rgba(133, 150, 108, 0.6);
+}
+
+.filter-group input::placeholder, 
+.filter-group select,
+.add-post-form input::placeholder,
+.add-post-form textarea::placeholder {
+    color: #7c7c7c;
+}
+
+.filter-group input:hover, 
+.filter-group select:hover,
+.add-post-form input:hover,
+.add-post-form textarea:hover {
+    background-color: #e7e7e7;
+}
+
+button[type="submit"],
+.page button,
+.add-post-form button {
+    background-color: #154c09;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover,
+.page button:hover,
+.add-post-form button:hover {
+    background-color: #3e6b23;
+}
+
+.container {
+    margin-top: 80px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_content {
+    flex-grow: 1;
+    padding: 0 20px;
+    margin-top: 80px;
+    width: 90%;
+}
+
+.content-wrapper {
+    display: flex;
+    margin-top: 80px;
+    width: 100%;
+}
+
+.interactive_page {
+    width: 20%;
+    background-color: #536b39;
+    border-radius: 51px;
+    height: 950px;
+}
+
+.heading {
+    background-color: #154c09;
+    width: 100%;
+    border-radius: 51px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.search {
+    background-color: #154c09;
+    border-radius: 51px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.interactive_time_period h3 {
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.interactive_time_period a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 3px 30px;
+}
+
+.time_heading {
+    background-color: #154c09;
+    color: white;
+    border-radius: 40px;
+    padding: 15px;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.class_heading {
+    background-color: #154c09;
+    height: 60px;
+    color: white;
+    border-radius: 51px;
+    padding: 15px;
+    font-size: 25px;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.same_class_weapons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.page {
+    background-color: #536b39;
+    border-radius: 40px;
+    width: calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.page img {
+    width: 90%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 40px;
+    margin: 5% auto;
+}
+
+.page h4 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.page p {
+    color: white;
+    font-size: 15px;
+    padding: 0 7%;
+    margin-bottom: 10px;
+}
+
+.page button {
+    width: 80%;
+    padding: 10px;
+    margin-left: 10%;
+    border-radius: 40px;
+}
+
+.forum-title {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.post {
+    background-color: #536b39;
+    border-radius: 15px;
+    width: 80%;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.post h3 {
+    color: white;
+    font-size: 24px;
+}
+
+.post p {
+    color: white;
+    font-size: 18px;
+}
+
+.post a {
+    color: #e0d5b3;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+.add-post-form {
+    background-color: #536b39;
+    border-radius: 15px;
+    width: 80%;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.add-post-form label {
+    color: white;
+    font-size: 16px;
+}
+
+.card {
+    display: flex;
+    background-color: #536b39;
+    border-radius: 15px;
+    width: 105%;
+    height: 50%;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    margin: 2%;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+.card-text h2 {
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+
+.card-text p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.team {
+    background-color: #154c09;
+    width: 101%;
+    border-radius: 50px;
+    color: white;
+    padding: 2%;
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 20px;
+    height: 20%;
+}
+
+.team-section {
+    display: flex;
+    height: 30%;
+    width: 105%;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.team-card {
+    background-color: #536b39;
+    border-radius: 15px;
+    width: 25%;
+    text-align: center;
+    padding: 15px;
+    margin: 1%;
+}
+
+.team-card img {
+    width: 80%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px auto;
+}
+
+.team-card h3 {
+    margin: 10px 0;
+    font-size: 25px;
+    color: white;
+}
+
+.team-card p {
+    font-size: 20px;
+    color: white;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    margin-left: 220px;
+}
+
+.leaflet-tooltip {
+    font-size: 18px !important;
+}
+
+.leaflet-popup-content {
+    font-size: 50px !important;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    color: #536b39;
+    font-size: 16px;
 }

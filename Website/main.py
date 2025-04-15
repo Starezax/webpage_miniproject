@@ -241,8 +241,9 @@ def map_view():
     selected_end_year = request.form.get('end_year')
     selected_period = request.form.get('period')
 
-    if selected_end_year < selected_start_year:
-        flash('Початковий рік мусить бути меншим ніж кінцевий', category='error')
+    if selected_end_year and selected_start_year:
+        if selected_end_year < selected_start_year:
+            flash('Початковий рік мусить бути меншим ніж кінцевий', category='error')
 
 
 
