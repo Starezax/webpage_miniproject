@@ -79,6 +79,16 @@ def forum():
 
 @app.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def post(post_id):
+    profile_pic_exists = False
+    profile_pic_url = None
+    
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+
     post = Post.query.get(post_id)
     if request.method == 'POST':
         comment_content = request.form['comment']

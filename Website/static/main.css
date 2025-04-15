@@ -304,6 +304,7 @@ button[type="submit"]:hover,
     display: flex;
     flex-direction: column;
     padding-bottom: 15px;
+    margin: 10px;
 }
 
 .page img {
@@ -464,12 +465,6 @@ button[type="submit"]:hover,
 .team-card p {
     font-size: 20px;
     color: white;
-}
-
-#map {
-    width: 100%;
-    height: 100vh;
-    margin-left: 220px;
 }
 
 .leaflet-tooltip {

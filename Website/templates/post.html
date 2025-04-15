@@ -1,215 +1,48 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ post.title }} - Militaris</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+{% extends "base.html" %}
 
-        body {
-            background-color: #bfaa6a;
-            font-family: Tahoma;
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
+{% block title %}{{ post.title }} - Militaris{% endblock %}
 
-        .navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #536b39;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
+{% block extra_css %}
+<style>
+    .back-button {
+        background-color: #154c09;
+        color: white;
+        padding: 12px 24px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
 
-        .navigation_links {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+    .back-button:hover {
+        background-color: #3e6b23;
+    }
+</style>
+{% endblock %}
 
-        .nav-center {
-            display: flex;
-            gap: 50px;
-            justify-content: center;
-        }
+{% block content %}
+<div class="container">
+    <h1 class="forum-title">{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
 
-        .nav-right {
-            position: absolute;
-            right: 50px;
-            display: flex;
-            gap: 20px;
-        }
+    <h2>Comments</h2>
 
-        .navigation_links button {
-            color: white;
-            background-color: transparent;
-            border: none;
-            border-radius: 30px;
-            font-size: 20px;
-            font-family: Tahoma;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    <form action="/post/{{ post.id }}" method="POST" class="add-post-form">
+        <textarea name="comment" required></textarea><br><br>
+        <button type="submit">Add Comment</button>
+    </form>
 
-        .navigation_links button:hover {
-            background-color: white;
-            color: #536b39;
-        }
-
-        .container {
-            margin-top: 80px;
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .forum-title {
-            font-size: 30px;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .post {
-            background-color: #536b39;
-            border-radius: 15px;
-            width: 80%;
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-
-        .post h3 {
-            color: white;
-            font-size: 24px;
-        }
-
-        .post p {
-            color: white;
-            font-size: 18px;
-        }
-
-        .add-post-form {
-            background-color: #536b39;
-            border-radius: 15px;
-            width: 80%;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .add-post-form label {
-            color: white;
-            font-size: 16px;
-        }
-
-        .add-post-form input,
-        .add-post-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-
-        .add-post-form button {
-            background-color: #154c09;
-            color: white;
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .add-post-form button:hover {
-            background-color: #3e6b23;
-        }
-
-        .back-button {
-            background-color: #154c09;
-            color: white;
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .back-button:hover {
-            background-color: #3e6b23;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="navigation">
-        <div class="navigation_links">
-            {% if session.get('user_id') %}
-            <a href="{{ url_for('profile') }}" class="profile-circle" style="position: absolute; left: 50px; width: 3.5rem; height: 3.5rem; border-radius: 50%; background-color: #154c09; color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; overflow: hidden;">
-                {% if profile_pic_exists %}
-                    <img src="{{ url_for('static', filename=profile_pic_url) }}" style="width: 100%; height: 100%; object-fit: cover;">
-                {% else %}
-                    {{ session.get('username', '?')[0].upper() }}
-                {% endif %}
-            </a>
-            {% endif %}
-            
-            <div class="nav-center">
-                <button onclick="window.location.href='/'">Головна</button>
-                <button onclick="window.location.href='/wikipedia'">Довідник</button>
-                <button onclick="window.location.href='/map'">Карта</button>
-                <button onclick="window.location.href='/about'">Про нас</button>
-                <button onclick="window.location.href='/forum'">Форум</button>
-            </div>
-    
-            <div class="nav-right">
-                {% if session.get('user_id') %}
-                    <button onclick="window.location.href='/logout'">Log Out</button>
-                {% else %}
-                    <button onclick="window.location.href='/login'">Log In</button>
-                    <button onclick="window.location.href='/signup'">Sign Up</button>
-                {% endif %}
-            </div>
-        </div>
+    {% for comment in comments %}
+    <div class="post">
+        <p>{{ comment.content }}</p>
+        {% if session.get('user_id') == comment.user_id %}
+            <a href="/delete_comment/{{ comment.id }}">Delete Comment</a>
+        {% endif %}
     </div>
+    {% endfor %}
 
-    <div class="container">
-        <h1 class="forum-title">{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
-
-        <h2>Comments</h2>
-
-        <form action="/post/{{ post.id }}" method="POST" class="add-post-form">
-            <textarea name="comment" required></textarea><br><br>
-            <button type="submit">Add Comment</button>
-        </form>
-
-        {% for comment in comments %}
-        <div class="post">
-            <p>{{ comment.content }}</p>
-            {% if session.get('user_id') == comment.user_id %}
-                <a href="/delete_comment/{{ comment.id }}">Delete Comment</a>
-            {% endif %}
-        </div>
-        {% endfor %}
-
-        <button class="back-button" onclick="window.location.href='/forum'">Back to Forum</button>
-    </div>
-
-</body>
-</html>
+    <button class="back-button" onclick="window.location.href='/forum'">Back to Forum</button>
+</div>
+{% endblock %}

@@ -1,385 +1,260 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Militaris mainpage</title>
-    <style>
-        img {
-            width: 1510px;
-            height: 1000px;
-            object-fit: cover;
-            display: flex;
-        }
+{% extends "base.html" %}
 
-        p.heading {
-            font-weight: bold;
-        }
-        .navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #536b39;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
+{% block title %}Головна - Militaris{% endblock %}
 
-        .navigation_links {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+{% block extra_css %}
+<style>
+    .image-container {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
 
-        .nav-center {
-            display: flex;
-            gap: 50px;
-            justify-content: center;
-        }
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-        .nav-right {
-            position: absolute;
-            right: 50px;
-            display: flex;
-            gap: 20px;
-        }
+    .text-overlay {
+        position: absolute;
+        bottom: 110px;
+        width: 35%;
+        height: 12%;
+        text-align: center;
+        background: #536b39;
+        padding-top: 1%;
+    }
 
-        .navigation_links button {
-            color: white;
-            background-color: transparent;
-            border: none;
-            border-radius: 30px;
-            font-size: 20px;
-            font-family: Tahoma;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    .text-overlay p {
+        color: white;
+        font-size: 28px;
+        margin: 0;
+        text-transform: uppercase;
+        font-family: Tahoma;
+        font-weight: 736;
+    }
 
-        .navigation_links button:hover {
-            background-color: white;
-            color: #536b39;
-        }
+    .text-overlay button {
+        color: white;
+        background-color: #154c09;
+        border: none;
+        width: 100%;
+        font-size: 27px;
+        padding-top: 1%;
+        height: 53%;
+        cursor: pointer;
+    }
 
-        .image-container {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+    .line {
+        background-color: #536b39;
+        width: 100%;
+    }
 
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .line p {
+        font-size: 35px;
+        font-weight: 600;
+        font-family: Tahoma;
+        color: white;
+        text-align: center;
+        padding: 1%;
+        margin: 0px;
+        justify-content: space-between;
+    }
 
-        .text-overlay {
-            vertical-align: bottom;
-            position: absolute;
-            bottom: 18px;
-            width: 35%;
-            height: 12%;
-            text-align: center;
-            background: #536b39;
-            padding-top: 1%;
-        }
+    .most_popular {
+        margin-top: 2%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2%;
+    }
 
-        .text-overlay p {
-            color: white;
-            font-size: 28px;
-            margin: 0;
-            text-transform: uppercase;
-            font-family: Tahoma;
-            font-weight: 736;
-        }
+    .most_popular_heading {
+        background-color: #154c09;
+        width: 100%;
+        border-radius: 50px;
+        text-align: center;
+        font-family: Tahoma;
+        font-weight: 650;
+        color: white;
+        font-size: 50px;
+        padding: 1%;
+        margin: 10px;
+    }
 
-        .text-overlay button {
-            color: white;
-            background-color: #154c09;
-            border: none;
-            width: 100%;
-            font-size: 27px;
-            padding-top: 1%;
-            height: 53%;
-        }
+    .statistics {
+        background-color: #536b39;
+        width: 96%;
+        height: 600px;
+        margin: 2%;
+        border-radius: 50px;
+        display: flex;
+        font-family: Tahoma;
+    }
 
-        .line {
-            background-color: #536b39;
-            width: 100%;
-        }
+    .stats-content {
+        width: 50%;
+    }
 
-        .line p {
-            font-size: 35px;
-            font-weight: 600;
-            font-family: Tahoma;
-            color: white;
-            text-align: center;
-            padding: 1%;
-            margin: 0px;
-            justify-content: space-between;
-        }
+    .stats-title {
+        background-color: #154c09;
+        color: white;
+        display: inline-block;
+        padding: 20px 50px;
+        border-radius: 50px;
+        font-size: 30px;
+        margin-bottom: 30px;
+        vertical-align: top;
+        margin-top: 0px;
+    }
 
-        .most_popular {
-            margin-top: 2%;
-            display: flex;
-            flex-wrap: wrap;
-            margin: 2%;
-        }
+    .stat-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-left: 5%;
+    }
 
-        .most_popular_heading {
-            background-color: #154c09;
-            width: 100%;
-            border-radius: 50px;
-            text-align: center;
-            font-family: Tahoma;
-            font-weight: 650;
-            color: white;
-            font-size: 50px;
-            padding: 1%;
-            margin: 0px;
-        }
+    .stat-item .bullet {
+        color: white;
+        font-size: 30px;
+        margin-right: 15px;
+    }
 
-        .page {
-            background-color: #536b39;
-            border-radius: 40px;
-            width: 23%;
-            display: inline-block;
-            padding-bottom: 15px;
-            font-family: Tahoma;
-            margin: 1%;
-        }
+    .stat-item .label {
+        color: white;
+        font-size: 3rem;
+        margin-right: 20px;
+        font-weight: bold;
+    }
 
-        .page img {
-            width: 90%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 40px;
-            margin: 5% auto;
-        }
+    .stat-item .value {
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+    }
 
-        .page h4 {
-            color: white;
-            font-size: 20px;
-            text-align: center;
-            margin: 10px 0;
-        }
+    .stats-image {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 0 50px 50px 0;
+    }
 
-        .page p {
-            color: white;
-            font-size: 15px;
-            padding: 0 7%;
-            margin-bottom: 10px;
-        }
+    .stats-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50px;
+    }
 
-        .page button {
-            background-color: #154c09;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            width: 80%;
-            padding: 10px;
-            margin-left: 10%;
-            cursor: pointer;
-        }
+    .donate {
+        width: 100%;
+        height: 750px;
+    }
 
-        .statistics {
-            background-color: #536b39;
-            width: 96%;
-            height: 600px;
-            margin: 2%;
-            border-radius: 50px;
-            display: flex;
-            font-family: Tahoma;
-        }
+    .donate img {
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+    }
 
-        .stats-content {
-            width: 50%;
-        }
+    .donate button {
+        background-color: #154c09;
+        width: 100%;
+        margin: 0px;
+        font-family: Tahoma;
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        padding: 1%;
+        cursor: pointer;
+        border: none;
+    }
 
-        .stats-title {
-            background-color: #154c09;
-            color: white;
-            display: inline-block;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-size: 30px;
-            margin-bottom: 30px;
-            vertical-align: top;
-            margin-top: 0px;
-        }
+    .content-container {
+        padding: 0;
+        margin-top: 70px;
+    }
+</style>
+{% endblock %}
 
-        .stat-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-left: 5%;
-        }
+{% block content %}
+<div class="image-container">
+    <div class="text-overlay">
+        <p class="header">ВІЙСЬКОВА ТЕХНІКА ТА БОЙОВІ КОНФЛІКТИ</p>
+        <button onclick="window.location.href='/about'">Про нас</button>
+    </div>
+    <img src="{{ url_for('static', filename='images/cool.jpg') }}" alt="Hero Image">
+</div>
 
-        .stat-item .bullet {
-            color: white;
-            font-size: 30px;
-            margin-right: 15px;
-        }
+<div class="line">
+    <p>ЗБРОЯ ІСТОРІЯ СПІЛЬНОТА</p>
+</div>
 
-        .stat-item .label {
-            color: white;
-            font-size: 3rem;
-            margin-right: 20px;
-            font-weight: bold;
-        }
+<div class="most_popular">
+    <p class="most_popular_heading">Найпопулярніші статті</p>
 
-        .stat-item .value {
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
-        .stats-image {
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            border-radius: 0 50px 50px 0;
-        }
-
-        .stats-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50px;
-        }
-
-        .donate {
-            width: 100%;
-            height: 750px;
-        }
-
-        .donate img {
-            height: 90%;
-        }
-
-        .donate button {
-            background-color: #154c09;
-            width: 100.4%;
-            margin: 0px;
-            font-family: Tahoma;
-            font-size: 40px;
-            text-align: center;
-            font-weight: bold;
-            color: white;
-            padding: 1%;
-            cursor: pointer;
-        }
-
-    </style>
-</head>
-<body style="background-color: #bfaa6a;">
-
-    <div class="navigation">
-        <div class="navigation_links">
-            {% if session.get('user_id') %}
-            <a href="{{ url_for('profile') }}" class="profile-circle" style="position: absolute; left: 50px; width: 3.5rem; height: 3.5rem; border-radius: 50%; background-color: #154c09; color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; overflow: hidden;">
-                {% if profile_pic_exists %}
-                    <img src="{{ url_for('static', filename=profile_pic_url) }}" style="width: 100%; height: 100%; object-fit: cover;">
-                {% else %}
-                    {{ session.get('username', '?')[0].upper() }}
-                {% endif %}
-            </a>
-            {% endif %}
-            
-            <div class="nav-center">
-                <button onclick="window.location.href='/'">Головна</button>
-                <button onclick="window.location.href='/wikipedia'">Довідник</button>
-                <button onclick="window.location.href='/map'">Карта</button>
-                <button onclick="window.location.href='/about'">Про нас</button>
-                <button onclick="window.location.href='/forum'">Форум</button>
-            </div>
-    
-            <div class="nav-right">
-                {% if session.get('user_id') %}
-                    <button onclick="window.location.href='/logout'">Log Out</button>
-                {% else %}
-                    <button onclick="window.location.href='/login'">Log In</button>
-                    <button onclick="window.location.href='/signup'">Sign Up</button>
-                {% endif %}
-            </div>
-        </div>
+    <div class="page">
+        <img src="{{ url_for('static', filename='images/Mitsubishi_Type_73.jpg') }}" alt="Mitsubishi Type 73">
+        <h4>Mitsubishi Type 73</h4>
+        <p>Mitsubishi Type 73 — компактний армійський позашляховик японської компанії Mitsubishi Motors...</p>
+        <button>Дізнатися більше</button>
     </div>
 
-    <div class="image-container">
-        <div class="text-overlay">
-            <p class="header">ВІЙСЬКОВА ТЕХНІКА ТА БОЙОВІ КОНФЛІКТИ</p>
-            <button onclick="window.location.href='/about'">Про нас</button>
-        </div>
-        <img src="{{ url_for('static', filename='images/cool.jpg') }}">
+    <div class="page">
+        <img src="{{ url_for('static', filename='images/bhd23.jpg') }}" alt="Богдан 2351">
+        <h4>Богдан 2351</h4>
+        <p>Богдан 2351 — багатоцільовий автомобіль у форм-факторі пікапу...</p>
+        <button>Дізнатися більше</button>
     </div>
 
-    <div class="line">
-        <p>ЗБРОЯ ІСТОРІЯ СПІЛЬНОТА</p>
+    <div class="page">
+        <img src="{{ url_for('static', filename='images/volt.jpg') }}" alt="VOLS">
+        <h4>VOLS</h4>
+        <p>VOLS — військовий багі, створений українським підприємцем...</p>
+        <button>Дізнатися більше</button>
     </div>
 
-    <div class="most_popular">
-        <p class="most_popular_heading">Найпопулярніші статті</p>
+    <div class="page">
+        <img src="{{ url_for('static', filename='images/maz_cropped.jpg') }}" alt="МАЗ-537">
+        <h4>МАЗ-537</h4>
+        <p>МАЗ-537 — типовий представник радянських чотирьохосних великовантажних тягачів...</p>
+        <button>Дізнатися більше</button>
+    </div>
+</div>
 
-        <div class="page">
-            <img src="{{ url_for('static', filename='images/Mitsubishi_Type_73.jpg') }}">
-            <h4>Mitsubishi Type 73</h4>
-            <p>Mitsubishi Type 73 — компактний армійський позашляховик японської компанії Mitsubishi Motors...</p>
-            <button>Дізнатися більше</button>
-        </div>
+<div class="statistics">
+    <div class="stats-content">
+        <h4 class="stats-title">СТАТИСТИКА</h4>
 
-        <div class="page">
-            <img src="{{ url_for('static', filename='images/bhd23.jpg') }}">
-            <h4>Богдан 2351</h4>
-            <p>Богдан 2351 — багатоцільовий автомобіль у форм-факторі пікапу...</p>
-            <button>Дізнатися більше</button>
-        </div>
-
-        <div class="page">
-            <img src="{{ url_for('static', filename='images/volt.jpg') }}">
-            <h4>VOLS</h4>
-            <p>VOLS — військовий багі, створений українським підприємцем...</p>
-            <button>Дізнатися більше</button>
-        </div>
-
-        <div class="page">
-            <img src="{{ url_for('static', filename='images/maz_cropped.jpg') }}">
-            <h4>МАЗ-537</h4>
-            <p>МАЗ-537 — типовий представник радянських чотирьохосних великовантажних тягачів...</p>
-            <button>Дізнатися більше</button>
-        </div>
+        <div class="stat-item"><span class="bullet">•</span><span class="label">Користувачі:</span><span class="value">{{ user_count }}</span></div>
+        <div class="stat-item"><span class="bullet">•</span><span class="label">Зображень:</span><span class="value">{{ pictures_count }}</span></div>
+        <div class="stat-item"><span class="bullet">•</span><span class="label">Битви:</span><span class="value">{{ battles_count }}</span></div>
     </div>
 
-    <div class="statistics">
-        <div class="stats-content">
-            <h4 class="stats-title">СТАТИСТИКА</h4>
-
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Користувачі:</span><span class="value">{{ user_count }}</span></div>
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Зображень:</span><span class="value">{{ pictures_count }}</span></div>
-            <div class="stat-item"><span class="bullet">•</span><span class="label">Битви:</span><span class="value">{{ battles_count }}</span></div>
-        </div>
-
-        <div class="stats-image">
-            <img src="{{ url_for('static', filename='images/mainpage_granader.jpg') }}">
-        </div>
+    <div class="stats-image">
+        <img src="{{ url_for('static', filename='images/mainpage_granader.jpg') }}" alt="Статистика">
     </div>
+</div>
 
-    <div class="donate">
-        <img src="{{ url_for('static', filename='images/cooler.jpg') }}">
-        <button  onclick="window.open('https://savelife.in.ua/donate/#donate-army-card-once', '_blank')">ПІДТРИМАТИ УКРАЇНСЬКУ АРМІЮ</button>
-    </div>
+<div class="donate">
+    <img src="{{ url_for('static', filename='images/cooler.jpg') }}" alt="Donate">
+    <button onclick="window.open('https://savelife.in.ua/donate/#donate-army-card-once', '_blank')">ПІДТРИМАТИ УКРАЇНСЬКУ АРМІЮ</button>
+</div>
+{% endblock %}
 
-    <script>
-        setTimeout(function() {
-            const flash = document.querySelector('div[style*="position: absolute"]');
-            if (flash) {
-                flash.style.transition = 'opacity 0.5s ease';
-                flash.style.opacity = '0';
-                setTimeout(() => flash.remove(), 500);
-            }
-        }, 3000);
-    </script>
-</body>
-</html>
+{% block scripts %}
+<script>
+    setTimeout(function() {
+        const flash = document.querySelector('div[style*="position: absolute"]');
+        if (flash) {
+            flash.style.transition = 'opacity 0.5s ease';
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 500);
+        }
+    }, 3000);
+</script>
+{% endblock %}
