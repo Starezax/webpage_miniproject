@@ -377,27 +377,93 @@ def about():
 
 @app.route('/wiki_ww1')
 def wiki_ww1():
-    return render_template('wiki_ww1.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('wiki_ww1.html',
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/wiki_ww2')
 def wiki_ww2():
-    return render_template('wiki_ww2.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('wiki_ww2.html',
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/wiki_ussr')
 def wiki_ussr():
-    return render_template('wiki_ussr.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('wiki_ussr.html',
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/wiki_1991')
 def wiki_1991():
-    return render_template('wiki_1991.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('wiki_1991.html',
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/wiki_2014')
 def wiki_2014():
-    return render_template('wiki_2014.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('wiki_2014.html',
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/wiki_2022')
 def wiki_2022():
-    return render_template('wiki_2022.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('wiki_2022.html',
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

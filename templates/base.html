@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Militaris{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     {% block extra_css %}{% endblock %}
@@ -9,15 +10,17 @@
 <body>
     <div class="navigation">
         <div class="navigation_links">
-            {% if session.get('user_id') %}
-            <a href="{{ url_for('profile') }}" class="profile-circle">
-                {% if profile_pic_exists %}
-                    <img src="{{ url_for('static', filename=profile_pic_url) }}" alt="Profile">
-                {% else %}
-                    {{ session.get('username', '?')[0].upper() }}
+            <div class="nav-left">
+                {% if session.get('user_id') %}
+                <a href="{{ url_for('profile') }}" class="profile-circle">
+                    {% if profile_pic_exists %}
+                        <img src="{{ url_for('static', filename=profile_pic_url) }}" alt="Profile">
+                    {% else %}
+                        {{ session.get('username', '?')[0].upper() }}
+                    {% endif %}
+                </a>
                 {% endif %}
-            </a>
-            {% endif %}
+            </div>
             
             <div class="nav-center">
                 <button onclick="window.location.href='/'">Головна</button>
@@ -29,29 +32,23 @@
     
             <div class="nav-right">
                 {% if session.get('user_id') %}
-                    <button onclick="window.location.href='/logout'">Log Out</button>
+                    <button onclick="window.location.href='/logout'">Вийти</button>
                 {% else %}
-                    <button onclick="window.location.href='/login'">Log In</button>
-                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                    <button onclick="window.location.href='/login'">Увійти</button>
+                    <button onclick="window.location.href='/signup'">Реєстрація</button>
                 {% endif %}
             </div>
         </div>
     </div>
 
     <div class="content-container">
-        {% block content %}
-
-
-        {% endblock %}
+        {% block content %}{% endblock %}
     </div>
 
     <div class="footer">
         <p>2025 © Militaris</p>
     </div>
 
-    {% block scripts %}
-
-
-    {% endblock %}
+    {% block scripts %}{% endblock %}
 </body>
 </html>

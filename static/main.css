@@ -43,42 +43,50 @@ body {
     left: 0;
     right: 0;
     background-color: #536b39;
-    height: 70px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 300;
+    z-index: 100;
+    padding: 0 10px;
 }
 
 .navigation_links {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    flex-wrap: wrap;
 }
 
-.nav-center {
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-}
+    .nav-left {
+        display: flex;
+        align-items: center;
+        margin: 5px;
+    }
 
-.nav-right {
-    position: absolute;
-    right: 50px;
-    display: flex;
-    gap: 20px;
-}
+    .nav-center {
+        display: flex;
+        gap: 2.6vw;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 5px 0;
+    }
+
+    .nav-right {
+        display: flex;
+        gap: 1vw;
+        margin: 5px;
+    }
 
 .navigation_links button {
     color: white;
     background-color: transparent;
     border: none;
     border-radius: 30px;
-    font-size: 20px;
+    font-size: clamp(16px, 1.05vw, 20px);
     font-family: Tahoma;
-    padding: 10px 20px;
+    padding: 10px 1vw;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -89,8 +97,6 @@ body {
 }
 
 .profile-circle {
-    position: absolute;
-    left: 50px;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
@@ -103,6 +109,7 @@ body {
     cursor: pointer;
     overflow: hidden;
     text-decoration: none;
+    margin-right: 5px;
 }
 
 .profile-circle img {
