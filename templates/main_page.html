@@ -19,21 +19,22 @@
 
     .text-overlay {
         position: absolute;
-        bottom: 110px;
-        width: 35%;
-        height: 12%;
+        bottom: 10vh;
+        width: clamp(250px, 35%, 500px);
+        height: auto;
+        min-height: 12%;
         text-align: center;
         background: #536b39;
-        padding-top: 1%;
+        padding: 1% 2%;
     }
 
     .text-overlay p {
         color: white;
-        font-size: 28px;
+        font-size: clamp(18px, 2vw, 28px);
         margin: 0;
         text-transform: uppercase;
         font-family: Tahoma;
-        font-weight: 736;
+        font-weight: 700;
     }
 
     .text-overlay button {
@@ -41,10 +42,12 @@
         background-color: #154c09;
         border: none;
         width: 100%;
-        font-size: 27px;
-        padding-top: 1%;
-        height: 53%;
+        font-size: clamp(16px, 1.8vw, 27px);
+        padding: 1vh 1vw;
+        height: auto;
+        min-height: 5vh;
         cursor: pointer;
+        margin-top: 1vh;
     }
 
     .line {
@@ -53,13 +56,13 @@
     }
 
     .line p {
-        font-size: 35px;
+        font-size: clamp(22px, 3vw, 35px);
         font-weight: 600;
         font-family: Tahoma;
         color: white;
         text-align: center;
         padding: 1%;
-        margin: 0px;
+        margin: 0;
         justify-content: space-between;
     }
 
@@ -78,32 +81,75 @@
         font-family: Tahoma;
         font-weight: 650;
         color: white;
-        font-size: 50px;
+        font-size: clamp(28px, 3.5vw, 50px);
         padding: 1%;
         margin: 10px;
+    }
+
+    .most_popular .page {
+        background-color: #536b39;
+        border-radius: 40px;
+        width: calc(25% - 20px);
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 15px;
+        margin: 10px;
+    }
+    
+    .most_popular .page img {
+        width: 90%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 40px;
+        margin: 5% auto;
+    }
+
+    .most_popular .page button {
+    background-color: #154c09;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    width: 80%;
+    max-width: 180px;
+    padding: 1vh 1vw;
+    font-size: clamp(14px, 1.2vw, 18px);
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    min-height: 4vh;
+    transition: background-color 0.3s;
+}
+
+    .most_popular .page button:hover {
+        background-color: #0d3006;
     }
 
     .statistics {
         background-color: #536b39;
         width: 96%;
-        height: 600px;
+        height: auto;
+        min-height: 450px;
         margin: 2%;
         border-radius: 50px;
         display: flex;
         font-family: Tahoma;
+        flex-wrap: wrap;
     }
 
     .stats-content {
         width: 50%;
+        padding: 2%;
+        display: flex;
+        flex-direction: column;
     }
 
     .stats-title {
         background-color: #154c09;
         color: white;
         display: inline-block;
-        padding: 20px 50px;
+        padding: 2vh 3vw;
         border-radius: 50px;
-        font-size: 30px;
+        font-size: clamp(20px, 2vw, 30px);
         margin-bottom: 30px;
         vertical-align: top;
         margin-top: 0px;
@@ -118,20 +164,20 @@
 
     .stat-item .bullet {
         color: white;
-        font-size: 30px;
+        font-size: clamp(20px, 2vw, 30px);
         margin-right: 15px;
     }
 
     .stat-item .label {
         color: white;
-        font-size: 3rem;
+        font-size: clamp(18px, 2.5vw, 3rem);
         margin-right: 20px;
         font-weight: bold;
     }
 
     .stat-item .value {
         color: white;
-        font-size: 3rem;
+        font-size: clamp(18px, 2.5vw, 3rem);
         font-weight: bold;
     }
 
@@ -151,25 +197,26 @@
 
     .donate {
         width: 100%;
-        height: 750px;
+        height: auto;
     }
 
     .donate img {
         width: 100%;
-        height: 90%;
+        height: auto;
+        max-height: 700px;
         object-fit: cover;
     }
 
     .donate button {
         background-color: #154c09;
         width: 100%;
-        margin: 0px;
+        margin: 0;
         font-family: Tahoma;
-        font-size: 40px;
+        font-size: clamp(24px, 2.5vw, 40px);
         text-align: center;
         font-weight: bold;
         color: white;
-        padding: 1%;
+        padding: 1.5vh;
         cursor: pointer;
         border: none;
     }
@@ -177,6 +224,52 @@
     .content-container {
         padding: 0;
         margin-top: 70px;
+    }
+    
+    @media (max-width: 992px) {
+        .most_popular .page {
+            width: calc(50% - 20px);
+        }
+        
+        .statistics {
+            flex-direction: column;
+        }
+        
+        .stats-content, .stats-image {
+            width: 100%;
+        }
+        
+        .stats-image {
+            height: 300px;
+            border-radius: 0 0 50px 50px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .text-overlay {
+            width: 70%;
+            right: 15%;
+            left: 15%;
+        }
+        
+        .most_popular .page {
+            width: 100%;
+        }
+        
+        .stat-item {
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: center;
+        }
+        
+        .stat-item .bullet {
+            display: none;
+        }
+        
+        .stat-item .label {
+            margin-right: 0;
+            margin-bottom: 5px;
+        }
     }
 </style>
 {% endblock %}

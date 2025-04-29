@@ -358,7 +358,18 @@ def profile():
 
 @app.route('/RMMV_HX')
 def RMMV_HX():
-    return render_template('RMMV_HX.html')
+    profile_pic_exists = False
+    profile_pic_url = None
+
+    if 'user_id' in session:
+        profile_pic_path = os.path.join(app.static_folder, 'profile_pics', f"{session['user_id']}.jpg")
+        profile_pic_exists = os.path.exists(profile_pic_path)
+        if profile_pic_exists:
+            profile_pic_url = f'profile_pics/{session["user_id"]}.jpg'
+
+    return render_template('RMMV_HX.html', 
+                          profile_pic_exists=profile_pic_exists,
+                          profile_pic_url=profile_pic_url)
 
 @app.route('/about')
 def about():

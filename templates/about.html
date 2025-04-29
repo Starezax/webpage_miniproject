@@ -2,6 +2,161 @@
 
 {% block title %}Militaris - Про нас{% endblock %}
 
+{% block extra_css %}
+<style>
+    .main_content {
+        flex-grow: 1;
+        padding: 0 3%;
+        margin-top: 3vh;
+        width: 95%;
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #536b39;
+        border-radius: clamp(12px, 2vw, 20px);
+        width: 100%;
+        margin-bottom: 3vh;
+        color: white;
+        box-shadow: 0 clamp(6px, 1.2vw, 10px) clamp(12px, 2.2vw, 20px) rgba(0, 0, 0, 0.3);
+        padding: 1.5%;
+    }
+
+    .card img {
+        width: 45%;
+        height: auto;
+        border-radius: clamp(8px, 1.5vw, 15px);
+        margin: 1%;
+        object-fit: cover;
+    }
+
+    .card-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 51%;
+        padding: 1% 2%;
+    }
+
+    .card-text h2 {
+        margin: 0 0 1.5vh 0;
+        color: #fff;
+        font-size: clamp(28px, 3.5vw, 42px);
+        line-height: 1.2;
+    }
+
+    .card-text p {
+        font-size: clamp(18px, 1.8vw, 24px);
+        line-height: 1.5;
+        color: #f0f0f0;
+    }
+
+    .team {
+        background-color: #154c09;
+        width: 100%;
+        border-radius: clamp(25px, 3vw, 50px);
+        color: white;
+        padding: 1.5%; 
+        text-align: center;
+        font-size: clamp(32px, 4vw, 50px);
+        margin-bottom: 2.5vh;
+        font-weight: bold;
+    }
+
+    .team-section {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 3vh;
+    }
+
+    .team-card {
+        background-color: #536b39;
+        border-radius: clamp(8px, 1.5vw, 15px);
+        width: 24%;
+        text-align: center;
+        padding: 2%;
+        flex: 0 0 auto;
+    }
+
+    .team-card img {
+        width: 75%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 10px auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .team-card h3 {
+        margin: 10px 0 5px;
+        font-size: clamp(20px, 2vw, 28px);
+        color: white;
+    }
+
+    .team-card p {
+        font-size: clamp(16px, 1.6vw, 22px);
+        color: white;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 992px) {
+        .team-section {
+            flex-wrap: wrap;
+        }
+        
+        .team-card {
+            width: 48%;
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            flex-direction: column;
+        }
+        
+        .card img {
+            width: 92%;
+            margin: 4% auto;
+            max-height: 350px;
+            object-fit: cover;
+        }
+        
+        .card-text {
+            width: 92%;
+            margin: 0 auto 4% auto;
+            padding: 3%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .team-card {
+            width: 100%;
+            padding: 5%;
+        }
+        
+        .team {
+            padding: 4%;
+            font-size: clamp(26px, 5vw, 36px);
+        }
+        
+        .card-text h2 {
+            font-size: clamp(26px, 4.5vw, 34px);
+        }
+        
+        .card-text p {
+            font-size: clamp(16px, 3.5vw, 20px);
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="main_content">
     <div class="card">
