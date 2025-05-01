@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Militaris Wikipedia{% endblock %}
+
+{% block extra_css %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -271,7 +276,7 @@
     <div class="content-wrapper">
         <div class="interactive_page">
             <p class="heading">Навігація по сторінці</p>
-            <p class="search">Пошук...</p>
+<!--             <p class="search">Пошук...</p> -->
             <div class="interactive_time_period">
                 <h3>Часовий період:</h3>
                 <a href="/wiki_ww2">Друга світова війна</a>
@@ -675,16 +680,17 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
-    <script>
+{% block scripts %}
+<script>
     setTimeout(function() {
         const flash = document.querySelector('div[style*="position: absolute"]');
         if (flash) {
-        flash.style.transition = 'opacity 0.5s ease';
-        flash.style.opacity = '0';
-        setTimeout(() => flash.remove(), 500);
+            flash.style.transition = 'opacity 0.5s ease';
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 500);
         }
     }, 3000);
-    </script>
-</body>
-</html>
+</script>
+{% endblock %}
