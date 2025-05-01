@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Militaris Wikipedia{% endblock %}
+
+{% block extra_css %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -717,16 +722,17 @@
 
         </div>
     </div>
+{% endblock %}
 
-    <script>
+{% block scripts %}
+<script>
     setTimeout(function() {
         const flash = document.querySelector('div[style*="position: absolute"]');
         if (flash) {
-        flash.style.transition = 'opacity 0.5s ease';
-        flash.style.opacity = '0';
-        setTimeout(() => flash.remove(), 500);
+            flash.style.transition = 'opacity 0.5s ease';
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 500);
         }
     }, 3000);
-    </script>
-</body>
-</html>
+</script>
+{% endblock %}
