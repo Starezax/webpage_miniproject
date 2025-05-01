@@ -1,234 +1,218 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>RMMV HX Military Vehicle</title>
-    <style>
-        body {
-            background-color: #bfaa6a;
-            font-family: Tahoma;
-            display: flex;
-            min-height: 100vh;
-        }
+{% extends "base.html" %}
 
-        .navigation {
-            position: fixed;
-            background-color: #536b39;
-            display: flex;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            justify-content: center;
-            align-items: center;
-            padding: 0 50px;
-            z-index: 100;
-        }
+{% block title %}RMMV HX Military Vehicle - Militaris{% endblock %}
 
-        .navigation_links {
-            display: flex;
-            gap: 50px;
+{% block extra_css %}
+<style>
+    .gun_name {
+        background-color: #154c09;
+        color: white;
+        border-radius: clamp(15px, 2.5vw, 25px);
+        padding: 1.5vh 2vw;
+        font-size: clamp(22px, 3vw, 30px);
+        margin-bottom: 2vh;
+        margin-top: 3vh;
+        text-align: center;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main_info, .hist_info {
+        background-color: #3a5834;
+        color: rgba(255, 255, 255, 0.9);
+        border-radius: clamp(20px, 3vw, 40px);
+        padding: 1.5vh 2vw;
+        font-size: clamp(15px, 1.6vw, 18px);
+        margin-bottom: 2vh;
+        line-height: 1.6;
+        width: 100%;
+    }
+    
+    .history {
+        background-color: #154c09;
+        color: white;
+        border-radius: clamp(25px, 3vw, 51px);
+        padding: 1.5vh 2vw;
+        font-size: clamp(18px, 2.2vw, 25px);
+        width: 40%;
+        text-align: center;
+        margin-bottom: 2vh;
+        margin-top: 2vh;
+    }
+    
+    .parameters {
+        background-color: #154c09;
+        width: 100%;
+        border-radius: clamp(25px, 3vw, 51px);
+        padding: 2vh 2vw;
+        color: white;
+        font-size: clamp(15px, 1.8vw, 20px);
+        margin-bottom: 4vh;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        min-height: 100px;
+        display: block;
+    }
+    
+    .content_row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 3vw;
+        padding-right: 2vw;
+        flex-wrap: wrap;
+    }
+    
+    .left_column {
+        width: 65%;
+        flex: 1 1 500px;
+    }
+    
+    .right_column {
+        background-color: #3a5834;
+        width: 30%;
+        flex: 1 1 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        border-radius: clamp(15px, 2vw, 25px);
+    }
+    
+    .vehicle_img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: clamp(10px, 1.5vw, 15px) clamp(10px, 1.5vw, 15px) 0 0;
+    }
+    
+    .right_h {
+        background-color: #154c09;
+        color: white;
+        padding: 1.5vh 2vw;
+        font-size: clamp(18px, 2vw, 25px);
+        text-align: center;
+        margin-bottom: 1.5vh;
+        margin-top: 0;
+        width: 100%;
+    }
+    
+    .specs {
+        color: white;
+        padding: 1vh 2vw;
+        font-size: clamp(14px, 1.5vw, 18px);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .specs_row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1vh;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 0.5vh;
+    }
+    
+    .specs_label {
+        font-weight: bold;
+    }
+    
+    @media (max-width: 992px) {
+        .content_row {
+            flex-direction: column;
         }
-
-        .navigation_links button {
-            color: white;
-            /* height: 70px; */
-            background-color: transparent;
-            /* border: 2px solid white; */
-            border: none;
-            border-radius: 30px;
-            font-size: 20px;
-            font-family: Tahoma;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+        
+        .left_column, .right_column {
+            width: 100%;
         }
-
-        .navigation_links button:hover {
-            background-color: white;
-            color: #536b39;
-        }
-
-        .gun_name{
-            background-color: #154c09;
-            color: white;
-            border-radius: 25px;
-            padding: 15px;
-            font-size: 30px;
-            margin-bottom: 20px;
-            margin-top: 100px;
-            text-align: center;
-            width: 90%;
-        }
-        .main_info,.hist_info {
-            background-color: #3a5834;
-            color: rgba(255, 255, 255, 0.656);
-            border-radius: 40px;
-            padding: 15px;
-            font-size: 15px;
-            margin-bottom: 20px;
-            margin-top: 0px;
+        
+        .history {
             width: 60%;
         }
-        .history{
-            background-color: #154c09;
-            height: 40px;
-            color: white;
-            border-radius: 51px;
-            padding: 15px;
-            font-size: 25px;
-            width: 40%;
-            text-align: center;
-            margin-bottom: 2%;
-            margin-top: 2%;
-        }
-        .parameters {
-            background-color: #154c09;
-            width: 100%;
-            border-radius: 51px;
-            padding: 20px;
-            color: white;
-            font-size: 25px;
-            margin-bottom: 100px;
-            box-sizing: border-box;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            min-height: 100px;
-            display: block;
-        }
-
-
-        .content_row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-            padding-right: 50px;
-        }
-
-        .left_column {
-            width: 65%;
-        }
-
-        .right_column {
-            background-color: #3a5834;
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .vehicle_img{
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-        }
-        .right_h{
-            background-color: #154c09;
-            color: white;
-            padding: 15px;
-            font-size: 25px;
-            text-align: center;
-            margin-bottom: 2%;
-            margin-top: 2%;
-        }
-        .specs {
-            color: white;
-            padding: 10px 20px;
-            font-size: 18px;
-            width: 100%;
-            box-sizing: border-box;
+    }
+    
+    @media (max-width: 768px) {
+        .history {
+            width: 80%;
         }
         
         .specs_row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 5px;
+            flex-direction: column;
+            gap: 0.5vh;
         }
         
-        .specs_label {
-            font-weight: bold;
+        .gun_name {
+            width: 100%;
         }
-    </style>
-</head>
-<body>
-    <div>
-        <div class="navigation">
-            <div class="navigation_links">
-                <a href="/main_page.html">Головна</a>
-                <a href="/wikipedia.html">Довідник</a>
-                <a href="/map.html">Карта</a>
-                <a href="/about.html">Про нас</a>
-            </div>
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="main_content">
+    <h1 class="gun_name">
+        Rheinmetall MAN Military Vehicles (RMMV) HX
+    </h1>
+    <div class="content_row">
+        <div class="left_column">
+          <p class='main_info'>
+            HX — серія спеціально розроблених тактичних військових вантажівок виробництва Rheinmetall MAN Military Vehicles (RMMV).
+            Серія HX була представлена 2003 року, а перше замовлення було розміщено у 2004 році.
+            Серія HX замінила попередні серії FX і LX у виробництві.
+            Лінійка HX2, яка наразі доповнює оригінальну лінійку HX, була анонсована у 2012 році.
+            Перші вантажівки серії HX2 були поставлені у квітні 2016 року.
+            Серії HX і HX2 спочатку доповнювали лінійку SX, але з 2019 року вони замінили серію SX, оскільки ця лінійка більше не виробляється.
+            Лінійку HX3 було анонсовано в травні 2021 року, а серійне виробництво заплановане на 2024 рік.
+          </p>
+          <h2 class='history'>Історія</h2>
+          <p class="hist_info">
+            Компанія Rheinmetall MAN Military Vehicles (тоді MAN) підтвердила, що розробляє лінійку HX на Defense Vehicles Dynamics (DVD) 2003 і показала дослідну модель пізніше того ж року на DSEI 2003.
+            У 2004 році попередня серія LX була замінена серією HX.
+            Серія FX була замінена у 2005 році.
+            Перше замовлення на серію HX надійшло від британської армії, яка оголосила в січні 2004 року, що вибрала продукцію MAN ERF UK Ltd, одна з версій вантажівки для транспортних засобів підтримки.
+            Контракт було укладено в березні 2005 року.
+          </p>
         </div>
-        <div class="main_content">
-            <h1 class="gun_name">
-                Rheinmetall MAN Military Vehicles (RMMV) HX
-            </h1>
-            <div class="content_row">
-                <div class="left_column">
-                  <p class='main_info'>
-                    HX — серія спеціально розроблених тактичних військових вантажівок виробництва Rheinmetall MAN Military Vehicles (RMMV).
-                    Серія HX була представлена 2003 року, а перше замовлення було розміщено у 2004 році.
-                    Серія HX замінила попередні серії FX і LX у виробництві.
-                    Лінійка HX2, яка наразі доповнює оригінальну лінійку HX, була анонсована у 2012 році.
-                    Перші вантажівки серії HX2 були поставлені у квітні 2016 року.
-                    Серії HX і HX2 спочатку доповнювали лінійку SX, але з 2019 року вони замінили серію SX, оскільки ця лінійка більше не виробляється.
-                    Лінійку HX3 було анонсовано в травні 2021 року, а серійне виробництво заплановане на 2024 рік.
-                  </p>
-                  <h2 class = 'history'>Історія</h2>
-                  <p class = "hist_info">
-                    Компанія Rheinmetall MAN Military Vehicles (тоді MAN) підтвердила, що розробляє лінійку HX на Defense Vehicles Dynamics (DVD) 2003 і показала дослідну модель пізніше того ж року на DSEI 2003.
-                    У 2004 році попередня серія LX була замінена серією HX.
-                    Серія FX була замінена у 2005 році.
-                    Перше замовлення на серію HX надійшло від британської армії, яка оголосила в січні 2004 року, що вибрала продукцію MAN ERF UK Ltd, одна з версій вантажівки для транспортних засобів підтримки.
-                    Контракт було укладено в березні 2005 року.
-                  </p>
+      
+        <div class="right_column">
+          <div class="parameters">
+            <img class="vehicle_img" src="https://www.army-technology.com/wp-content/uploads/sites/3/2020/05/Image-1-RMMV-HX-Family-of-Vehicles.jpg">
+            <h4 class="right_h">
+                Виробництво
+            </h4>
+            <div class="specs">
+                <div class="specs_row">
+                    <span class="specs_label">Тип:</span>
+                    <span>Тактична військова вантажівка</span>
                 </div>
-              
-                <div class="right_column">
-                  <div class="parameters">
-                    <img class="vehicle_img" src="https://www.army-technology.com/wp-content/uploads/sites/3/2020/05/Image-1-RMMV-HX-Family-of-Vehicles.jpg">
-                    <h4 class="right_h">
-                        Виробництво
-                    </h4>
-                    <div class="specs">
-                        <div class="specs_row">
-                            <span class="specs_label">Тип:</span>
-                            <span>Тактична військова вантажівка</span>
-                        </div>
-                        <div class="specs_row">
-                            <span class="specs_label">Походження:</span>
-                            <span>Австрія/Німеччина</span>
-                        </div>
-                        <div class="specs_row">
-                            <span class="specs_label">На озброєнні:</span>
-                            <span>2007 - т.ч</span>
-                        </div>
-                        <div class="specs_row">
-                            <span class="specs_label">Розроблено:</span>
-                            <span>2002</span>
-                        </div>
-                        <div class="specs_row">
-                            <span class="specs_label">Розробник:</span>
-                            <span>RMMV</span>
-                        </div>
-                        <div class="specs_row">
-                            <span class="specs_label">Виробник:</span>
-                            <span>RMMV</span>
-                        </div>
-                        <div class="specs_row">
-                            <span class="specs_label">Виготовлено:</span>
-                            <span>Близько 16 200 од.</span>
-                        </div>
-                    </div>
-                  </div>
+                <div class="specs_row">
+                    <span class="specs_label">Походження:</span>
+                    <span>Австрія/Німеччина</span>
                 </div>
-
-              </div>
-
+                <div class="specs_row">
+                    <span class="specs_label">На озброєнні:</span>
+                    <span>2007 - т.ч</span>
+                </div>
+                <div class="specs_row">
+                    <span class="specs_label">Розроблено:</span>
+                    <span>2002</span>
+                </div>
+                <div class="specs_row">
+                    <span class="specs_label">Розробник:</span>
+                    <span>RMMV</span>
+                </div>
+                <div class="specs_row">
+                    <span class="specs_label">Виробник:</span>
+                    <span>RMMV</span>
+                </div>
+                <div class="specs_row">
+                    <span class="specs_label">Виготовлено:</span>
+                    <span>Близько 16 200 од.</span>
+                </div>
+            </div>
+          </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
