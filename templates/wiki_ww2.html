@@ -692,7 +692,7 @@
     <div class="content-wrapper">
         <div class="interactive_page">
             <p class="heading">Навігація по сторінці</p>
-            <p class="search">Пошук...</p>
+            <!-- <p class="search">Пошук...</p> -->
             <div class="interactive_time_period">
                 <h3>Часовий період:</h3>
                 <a href="/wiki_ww2">Друга світова війна</a>
@@ -723,22 +723,23 @@
             <h3 id="heavy_trucks" class="class_heading">Вантажні автомобілі</h3>
                 <div class="same_class_weapons">
                     <div class="page">
-                        <img src="{{ url_for('static', filename='images/GAZ-AAA.jpg') }}">
-                        <h4>ГАЗ-ААА</h4>
-                        <p>ГАЗ-ААА — радянський вантажний автомобіль підвищеної прохідності. Являв собою реалізацію концепції створення «шестиколісного» автомобіля підвищеної прохідності за рахунок збільшення кількості ведучих мостів до двох.</p>
-                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                        <img src="{{ url_for('static', filename='images/GAZ-AA.jpg') }}">
+                        <h4>ГАЗ-АА</h4>
+                        <p> ГАЗ-АА — радянський середньотоннажний вантажний автомобіль з вантажопідйомністю 1,5 тонни, що широко використовувався в Україні в період Другої світової війни та в післявоєнний час.</p>
+                        <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%93%D0%90%D0%97-%D0%90%D0%90')">Дізнатися більше</button>
                     </div>
+
                     <div class="page">
                         <img src="{{ url_for('static', filename='images/ZIS-12.jpg') }}">
                         <h4>ЗІС-12</h4>
                         <p>ЗІС-12 — радянський  вантажний автомобіль заводу ЗІС, що являв собою подовжену модифікацію автомобіля ЗІС-5. Його було розроблено під керівництвом конструктора Є.І. Важинського для встановлення на ній різного озброєння та військового обладнання</p>
-                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                        <button onclick="window.open('https://ru.wikipedia.org/wiki/%D0%97%D0%98%D0%A1-12')">Дізнатися більше</button>
                     </div>
                     <div class="page">
                         <img src="{{ url_for('static', filename='images/IAG-10.jpg') }}">
                         <h4>ЯГ-10</h4>
                         <p>ЯГ-10 — перший радянський тривісний вантажний автомобіль із колісною формулою 6×4, розроблений на Ярославському державному автомобільному заводі (ЯГАЗ) у співпраці з НАТІ.</p>
-                        <button>Дізнатися більше</button>
+                        <button onclick="window.open('https://ru.wikipedia.org/wiki/29%D0%9A')">Дізнатися більше</button>
                 </div>
 
             <h3 id="light_trucks" class="class_heading">Легкі автомобілі</h3>
@@ -748,21 +749,21 @@
                     <img src="{{ url_for('static', filename='images/GAZ-MM.jpg') }}">
                     <h4>ГАЗ-ММ</h4>
                     <p>ГАЗ-ММ  — радянський вантажний автомобіль Горьківського автомобільного заводу вантажопідйомністю 1,5 т (1500 кг). Являв собою модернізований варіант легендарної ГАЗ-АА</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%93%D0%90%D0%97-%D0%9C%D0%9C')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/GAZ-640.jpg') }}">
                     <h4>ГАЗ-64</h4>
                     <p>ГАЗ-64 — радянський військовий повноприводний легковий автомобіль із спрощеним відкритим кузовом, який мав вирізи замість дверей (тип ранебаут — runabout)</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%93%D0%90%D0%97-64')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/ZIS-5V.jpg') }}">
                     <h4>ЗІС-5В</h4>
                     <p>ЗІС-5В – модель радянського вантажівки (буква «В» позначала «військовий»).За час Великої Вітчизняної війни було випущено 84 100 шт. автомобілів</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%97%D0%86%D0%A1-5')">Дізнатися більше</button>
                 </div>
             </div>
             <h3 id="ppo" class="class_heading">Системи ППО</h3>
@@ -771,21 +772,21 @@
                     <img src="{{ url_for('static', filename='images/72-K.jpg') }}">
                     <h4>72-K</h4>
                     <p>25-мм автоматична зенітна гармата зразка 1940 року (заводський індекс — 72-К) — радянська зенітна гармата періоду Німецько-радянської війни. Ця гармата була розроблена наприкінці 1939 — початку 1940 року</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/25-%D0%BC%D0%BC_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%BD%D0%B0_%D0%B7%D0%B5%D0%BD%D1%96%D1%82%D0%BD%D0%B0_%D0%B3%D0%B0%D1%80%D0%BC%D0%B0%D1%82%D0%B0_%D0%B7%D1%80%D0%B0%D0%B7%D0%BA%D0%B0_1940_%D1%80%D0%BE%D0%BA%D1%83_(72-%D0%9A)')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/61-K.jpg') }}">
                     <h4>61-K</h4>
                     <p>37-мм автоматична зенітна гармата зразка 1939 (61-К) (індекс ГРАУ —52-П-167) — радянська зенітна гармата періоду Другої світової війни. Розроблена на основі шведської 40-мм гармати Bofors</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/37-%D0%BC%D0%BC_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%BD%D0%B0_%D0%B7%D0%B5%D0%BD%D1%96%D1%82%D0%BD%D0%B0_%D0%B3%D0%B0%D1%80%D0%BC%D0%B0%D1%82%D0%B0_%D0%B7%D1%80%D0%B0%D0%B7%D0%BA%D0%B0_1939_%D1%80%D0%BE%D0%BA%D1%83_(61-%D0%9A)')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/52-K.jpg') }}">
                     <h4>52-К</h4>
                     <p>Повна офіційна назва — 85-мм зенітна гармата зразка 1939 року. Вона активно використовувалася під час Великої Вітчизняної війни як зенітна гармата, а також як протитанкове знаряддя, і після її закінчення ще довго перебувала на озброєнні Радянської Армії  до прийняття на озброєння зенітних ракетних комплексів.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/85-%D0%BC%D0%BC_%D0%B7%D0%B5%D0%BD%D1%96%D1%82%D0%BD%D0%B0_%D0%B3%D0%B0%D1%80%D0%BC%D0%B0%D1%82%D0%B0_%D0%B7%D1%80%D0%B0%D0%B7%D0%BA%D0%B0_1939_%D1%80%D0%BE%D0%BA%D1%83_(52-%D0%9A)')">Дізнатися більше</button>
                 </div>
             </div>
             <h3 id="rszv" class="class_heading">РСЗВ</h3>
@@ -794,21 +795,21 @@
                     <img src="{{ url_for('static', filename='images/BM-13.jpg') }}">
                     <h4>БМ-13</h4>
                     <p>БМ-13 — радянська бойова машина реактивної артилерії періоду Другої світової війни, наймасовіша радянська бойова машина (БМ) цього класу.Солдати нацистської Німеччини називали її «органом Сталіна» через характерний звук, який видавався при запуску ракет.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D1%8E%D1%88%D0%B0_(%D1%80%D0%B5%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%B0_%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0)')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/BM-8.jpg') }}">
                     <h4>БМ-8</h4>
                     <p>БМ-8 -  перша самохідна установка БМ-8-24 класу реактивних систем залпового вогню на танковому шасі, що була побудована на базі Т-60 в 1941 році</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://ru.wikipedia.org/wiki/%D0%91%D0%9C-8%E2%80%9348')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/BM-31.jpg') }}">
                     <h4>БМ-31</h4>
                     <p>БМ-31-12 — модифікація гвардійських реактивних мінометів типу «Катюша». Вирізнялася використанням спрямовувачів стільникового типу. Для стрільби застосовувалися снаряди М-31</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%91%D0%9C-31-12')">Дізнатися більше</button>
                 </div>
             </div>
 
@@ -818,23 +819,22 @@
                         <img src="{{ url_for('static', filename='images/SU-76M.jpg') }}">
                         <h4>СУ-76</h4>
                         <p>СУ-76 — радянська легка самохідно-артилерійська установка (САУ), машина безпосередньої підтримки піхоти, що застосовувалася в Німецько-радянській війні.</p>
-                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                        <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%A1%D0%A3-76')">Дізнатися більше</button>
                     </div>
     
                     <div class="page">
                         <img src="{{ url_for('static', filename='images/SU-5.jpg') }}">
                         <h4>СУ-5</h4>
                         <p>СУ-5 - радянська легка самохідна артилерійська установка (САУ) класу самохідних гаубиць, створена на базі танка Т-26. Була розробкою так званого «малого триплексу», оптимізацією компонування САУ</p>
-                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                        <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%A1%D0%90%D0%A3_%D0%A1%D0%A3-5')">Дізнатися більше</button>
                     </div>
     
                     <div class="page">
-                        <img src="{{ url_for('static', filename='images/SU-100.jpg') }}">
-                        <h4>СУ-100</h4>
-                        <p>СУ-100 — радянська самохідно-артилерійська установка (САУ) періоду Другої світової війни, класу винищувачів танків, середня по масі. Була створена на базі середнього танка Т-34-85</p>
-                        <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                        <img src="{{ url_for('static', filename='images/su_100p.jpg') }}">
+                        <h4>СУ-100П</h4>
+                        <p>СУ-100П (Об'єкт 105) - радянська 100-мм самохідна артилерійська установка . Вироблялася невеликою серією у 1949—1957 роках. Головний конструктор - Г.С.Єфімов.</p>
+                        <button onclick="window.open('https://en.wikipedia.org/wiki/SU-100P')">Дізнатися більше</button>
                     </div>
-                
 
             </div>
 
@@ -844,21 +844,21 @@
                     <img src="{{ url_for('static', filename='images/BT-5.jpg') }}">
                     <h4>БТ-5</h4>
                     <p>БТ-5 — радянський колісно-гусеничний легкий танк. Став другим серійним танком родини БТ, замінивши БТ-2 в виробництві з 1933 року.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%91%D0%A2-5')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/T-26.jpg') }}">
                     <h4>Т-26</h4>
                     <p>Т-26 — радянський легкий танк, створений на основі англійського танка «Vickers Mk.E», закупленого в 1930 році. Прийнятий на озброєння Червоної армії у 1931 році</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%A2-26')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/KV-2.jpg') }}">
                     <h4>КВ-2</h4>
                     <p>КВ-2 — радянський важкий штурмовий танк початку німецько-радянської війни. Абревіатура КВ означає «Климент Ворошилов» — офіційна назва серійних радянських важких танків випуску 1940–1943 рр</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%9A%D0%92-2')">Дізнатися більше</button>
             </div>
             <h3 id="btr" class="class_heading">БТР</h3>
             <div class="same_class_weapons">
@@ -866,21 +866,21 @@
                     <img src="{{ url_for('static', filename='images/BA-64.jpg') }}">
                     <h4>БА-64</h4>
                     <p>БА-64 — радянський легкий бронеавтомобіль періоду Другої світової війни. Був створений в липні — грудні 1941 року на шасі повнопривідного легкового автомобіля ГАЗ-64</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%91%D0%90-64')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/BA-10.jpg') }}">
                     <h4>БА-10</h4>
                     <p>БА-10 — радянський середній бронеавтомобіль 1930-х — 1940-х років. Був розроблений в конструкторському бюро Іжорського заводу в 1938 році як модернізація бронеавтомобіля БА-3.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%91%D0%90-10')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/BA-1.jpg') }}">
                     <h4>БА-І</h4>
                     <p>БА-І (скорочено від Бронеавтомобіль Іжорський, у низці джерел позначається як БАІ) — радянський середній Бронеавтомобіль міжвоєнного періоду та початкового періоду німецько-радянської війни</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%91%D0%90-%D0%86')">Дізнатися більше</button>
                 </div>
             </div>
 
@@ -890,21 +890,21 @@
                     <img src="{{ url_for('static', filename='images/TOK.jpg') }}">
                     <h4>Пістолет-Токарєва</h4>
                     <p>Пістолет ТТ («Тульський — Токарєв») — самозарядний 7,62-мм пістолет ТТ — особиста зброя нападу або захисту. Розроблений Ф. В. Токарєвим у 1930 році</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%9F%D1%96%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82_%D0%A2%D0%BE%D0%BA%D0%B0%D1%80%D1%94%D0%B2')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/nagan.jpg') }}">
                     <h4>Револьвер-Нагана</h4>
                     <p>Револьвер Нагана М1895 (7,62-мм револьвер Нагана 1895 року). Розмовна назва «Наган» — семизарядний револьвер, розроблений у 1895 році братами Емілем та Леоном Наганами для Російської імперії</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8C%D0%B2%D0%B5%D1%80_%D0%9D%D0%B0%D0%B3%D0%B0%D0%BD%D0%B0_%D0%9C1895')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/Browning-1900.jpg') }}">
                     <h4>Browning-1900</h4>
                     <p>**FN Browning M.1900** (Браунінг зразка 1900 року, Браунінг №1) — самозарядний пістолет, розроблений Джоном Браунінгом у 1896 році, широко використовуваний армією СРСР як трофейна і закуплена ще в довоєнний період зброя.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://ru.wikipedia.org/wiki/Browning_M1900')">Дізнатися більше</button>
                 </div>
             </div>
 
@@ -914,21 +914,21 @@
                     <img src="{{ url_for('static', filename='images/PPSH-41.jpg') }}">
                     <h4>ППШ-41</h4>
                     <p>7,62-мм пістолет-кулемет зразка 1941 року системи Шпагіна (ППШ) — радянський пістолет-кулемет, розроблений в 1940 році конструктором Г. С. Шпагіним під набій 7,62 × 25 мм ТТ </p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82-%D0%BF%D1%83%D0%BB%D0%B5%D0%BC%D1%91%D1%82_%D0%A8%D0%BF%D0%B0%D0%B3%D0%B8%D0%BD%D0%B0')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/PPS-43.jpg') }}">
                     <h4>ППС-43</h4>
                     <p>7,62-мм пістолети-кулемети зразків 1942 і 1943 років системи Судаєва (ППС)[прим. 1] — варіанти пістолета-кулемета, розробленого радянським конструктором Олексієм Судаєвим в 1942 році</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82-%D0%BF%D1%83%D0%BB%D0%B5%D0%BC%D1%91%D1%82_%D0%A1%D1%83%D0%B4%D0%B0%D0%B5%D0%B2%D0%B0')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/PPD-34.jpg') }}">
                     <h4>ППД-34</h4>
                     <p>7,62-мм пістолети-кулемети зразка 1940 років системи Дегтярьова (індекс ГРАУ -56-А-133) — модифікація пістолета-кулемета, розробленого радянським зброярем Василем Дегтярьовим в початку 1930-х років.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%9F%D0%9F%D0%94-34/40')">Дізнатися більше</button>
                 </div>
             </div>
 
@@ -938,45 +938,44 @@
                     <img src="{{ url_for('static', filename='images/smirnova.jpg') }}">
                     <h4>Автоматична гвинтівка Симонова</h4>
                     <p>Автоматична гвинтівка зразка 1936 року, АВС (Індекс ГАУ — 56-А-225) — радянська автоматична гвинтівка, розроблена зброярем Сергієм Симоновим.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%BD%D0%B0_%D0%B3%D0%B2%D0%B8%D0%BD%D1%82%D1%96%D0%B2%D0%BA%D0%B0_%D0%A1%D0%B8%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/tokk.jpg') }}">
                     <h4>Токарєва гвинтівка</h4>
                     <p>7,62-мм самозарядні гвинтівка системи Токарєва зразка 1940 року — модифікація радянської самозарядної гвинтівки, розробленої Ф. В. Токарєвим</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%B0_%D0%B3%D0%B2%D0%B8%D0%BD%D1%82%D1%96%D0%B2%D0%BA%D0%B0_%D0%A2%D0%BE%D0%BA%D0%B0%D1%80%D1%94%D0%B2%D0%B0')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/AVTOO.jpg') }}">
                     <h4>Автомат-Федорова</h4>
-                    <p>втомат Федорова, 2,5-лінійна автоматична гвинтівка Федорова, 2,5-лінійна гвинтівка Федорова — російська, а пізніше і радянська автоматична гвинтівка калібру 6,5 мм, розроблена зброярем Федоровим</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <p>Автомат Федорова, 2,5-лінійна автоматична гвинтівка Федорова, 2,5-лінійна гвинтівка Федорова — російська, а пізніше і радянська автоматична гвинтівка калібру 6,5 мм, розроблена зброярем Федоровим</p>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82_%D0%A4%D0%B5%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B0')">Дізнатися більше</button>
                 </div>
             </div>
 
             <h3 id="machine_gun" class="class_heading">Кулемети</h3>
-            <div class="same_class_weapons">
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/DP-27.jpg') }}">
                     <h4>ДП-27</h4>
                     <p>ДП (Дегтярьова Піхотний, Індекс ГРАУ — 56-Р-321) — ручний кулемет розроблений В. О. Дегтярьовим.</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%94%D0%9F_(%D0%BA%D1%83%D0%BB%D0%B5%D0%BC%D0%B5%D1%82)')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/SG-43.jpg') }}">
                     <h4>СГ-43</h4>
                     <p>7,62-мм кулемет Горюнова (СГ-43, Індекс ГАУ — 56-П-428) — радянський станковий кулемет[3].</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://ru.wikipedia.org/wiki/%D0%A1%D0%93-43')">Дізнатися більше</button>
                 </div>
 
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/MAKSS.jpg') }}">
                     <h4>Кулемет-Максим</h4>
                     <p>Кулемет Максима зразка 1910 року (Індекс ГРАУ — 56-П-421) — станковий кулемет, варіант британського кулемета Максима, який широко використовувався російською і радянською арміями під час Першої світової і Другої світової війн</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%9A%D1%83%D0%BB%D0%B5%D0%BC%D0%B5%D1%82_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0')">Дізнатися більше</button>
                 </div>
             </div>
 
@@ -984,9 +983,9 @@
             <div class="same_class_weapons">
                 <div class="page">
                     <img src="{{ url_for('static', filename='images/MOSINA.jpg') }}">
-                    <h4>Гвинтівка Мосіна-Нагана</h4>
+                    <h4>Мосіна</h4>
                     <p>Гвинтівка Мосіна-Нагана(мосінка або трьохлінійка) — магазинна військова гвинтівка, яку використовували військові сили Російської імперії, Радянського союзу і багатьох інших держав</p>
-                    <button onclick="window.location.href='/БТ-5'">Дізнатися більше</button>
+                    <button onclick="window.open('https://uk.wikipedia.org/wiki/%D0%93%D0%B2%D0%B8%D0%BD%D1%82%D1%96%D0%B2%D0%BA%D0%B0_%D0%9C%D0%BE%D1%81%D1%96%D0%BD%D0%B0-%D0%9D%D0%B0%D0%B3%D0%B0%D0%BD%D0%B0')">Дізнатися більше</button>
                 </div>
         
             </div>
